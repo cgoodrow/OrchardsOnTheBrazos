@@ -10,8 +10,10 @@
 </head>
 <body>
     @Html.Partial("_Header")
-    <div class="container body-content">
-        @RenderBody()
+    <div class="container">
+        <div class="col-lg-7">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
