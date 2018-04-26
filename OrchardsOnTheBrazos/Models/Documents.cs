@@ -8,5 +8,7 @@ namespace OrchardsOnTheBrazos.Models
     public class Documents
     {
         public int Id { get; set; }
+        public string DocumentTitle { get; set; }
+        public string Attachment { get; set; }
     }
 }
