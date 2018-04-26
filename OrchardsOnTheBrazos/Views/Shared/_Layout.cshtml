@@ -6,17 +6,20 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Roboto+Slab|Titillium+Web" rel="stylesheet">
 </head>
 <body>
-    @Html.Partial("_Header")
-    <div class="container">
-        <div class="col-lg-7">
-            @RenderBody()
+    <div class="container-fluid">
+        <div class="row">
+            @Html.Partial("_Header")
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
+                @RenderBody()
+            </div>
         </div>
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="container-fluid row">
+                <p class="text-center">&copy; @DateTime.Now.Year - Orchards On The Brazos</p>
+            </div>
         </footer>
     </div>
 

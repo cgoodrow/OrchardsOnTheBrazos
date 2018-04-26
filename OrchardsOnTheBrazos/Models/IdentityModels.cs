@@ -29,5 +29,9 @@ namespace OrchardsOnTheBrazos.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Announcements> Announcements { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Documents> Documents { get; set; }
     }
 }
