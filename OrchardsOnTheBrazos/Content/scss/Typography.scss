@@ -1,0 +1,21 @@
+﻿
+$black-han: 'Black Han Sans', sans-serif;
+$titillium: 'Titillium Web', sans-serif;
+
+$orange: #d1a017;
+
+$robot-slab: 'Roboto Slab', serif;
+
+h1 {
+    font-family: $black-han;
+    color: $orange;
+}
+
+h2, h3 {
+    font-family: $robot-slab;
+    color: $orange;
+}
+
+p {
+    font-family: $titillium;
+}
