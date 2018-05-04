@@ -6,111 +6,132 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using OrchardsOnTheBrazos.Models;
 
 namespace OrchardsOnTheBrazos.Controllers
 {
-    public class DocumentsController : Controller
+    public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Documents
+        // GET: Events
         public ActionResult Index()
         {
-            return View(db.Documents.ToList());
+            return View(db.Events.ToList());
         }
 
-        // GET: Documents/Details/5
-        public ActionResult Details(int? id)
+        // GET: Events/Details/5
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Documents documents = db.Documents.Find(id);
-            if (documents == null)
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(documents);
+            return View(@event);
         }
 
-        // GET: Documents/Create
+        // GET: Events/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Documents/Create
+        // POST: Events/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DocumentTitle,Attachment")] Documents documents)
+        public ActionResult Create([Bind(Include = "EventId,EventPost,EventPicture")] Event @event)
         {
+          
+
             if (ModelState.IsValid)
             {
-                db.Documents.Add(documents);
+                HttpPostedFileBase file = Request.Files["EventPicture"];
+
+                @event.EventId = Guid.NewGuid();
+
+                if (file != null && file.FileName != null && file.FileName != "") {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                        return View();
+                    }
+                    else
+                    {
+                        @event.EventPicture = @event.EventId + fi.Extension;
+                        file.SaveAs(Server.MapPath("~/Content/Images/" + @event.EventId + fi.Extension));
+                    }
+                }
+
+                db.Events.Add(@event);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(documents);
+            return View(@event);
         }
 
-        // GET: Documents/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Events/Edit/5
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Documents documents = db.Documents.Find(id);
-            if (documents == null)
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(documents);
+            return View(@event);
         }
 
-        // POST: Documents/Edit/5
+        // POST: Events/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DocumentTitle,Attachment")] Documents documents)
+        public ActionResult Edit([Bind(Include = "EventId,EventPost,EventPicture")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(documents).State = EntityState.Modified;
+                db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(documents);
+            return View(@event);
         }
 
-        // GET: Documents/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Events/Delete/5
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Documents documents = db.Documents.Find(id);
-            if (documents == null)
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(documents);
+            return View(@event);
         }
 
-        // POST: Documents/Delete/5
+        // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-            Documents documents = db.Documents.Find(id);
-            db.Documents.Remove(documents);
+            Event @event = db.Events.Find(id);
+            db.Events.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
