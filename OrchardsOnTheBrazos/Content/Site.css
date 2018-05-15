@@ -96,6 +96,9 @@ h2, h3 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.container-fluid {
+  padding: 5px; }
+
 .center-block {
   margin: 0 auto;
   display: block;
