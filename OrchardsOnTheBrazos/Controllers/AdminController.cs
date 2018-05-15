@@ -22,7 +22,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // GET: /Admin/
         [Authorize(Roles = "Administrator")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
-        public ActionResult Index(string searchStringUserNameOrEmail, string currentFilter, int? page)
+        public ActionResult Index(string searchStringUserNameOrEmail, string currentFilter, int? page, RegisterViewModel model)
         {
             try
             {
@@ -56,10 +56,13 @@ namespace OrchardsOnTheBrazos.Controllers
                 intTotalPageCount = UserManager.Users
                     .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
                     .Count();
+                    //.Where(x => x.LastName.Contains(searchStringUserNameOrEmail)).Count();
 
                 var result = UserManager.Users
                     .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
                     .OrderBy(x => x.UserName)
+                    //.Where(x => x.LastName.Contains(searchStringUserNameOrEmail))
+                    //.OrderBy(x => x.LastName)
                     .Skip(intSkip)
                     .Take(intPageSize)
                     .ToList();
@@ -68,6 +71,8 @@ namespace OrchardsOnTheBrazos.Controllers
                 {
                     ExpandedUserDTO objUserDTO = new ExpandedUserDTO();
 
+                    objUserDTO.FirstName = item.FirstName;
+                    objUserDTO.LastName = item.LastName;
                     objUserDTO.UserName = item.UserName;
                     objUserDTO.Email = item.Email;
                     objUserDTO.LockoutEndDateUtc = item.LockoutEndDateUtc;
