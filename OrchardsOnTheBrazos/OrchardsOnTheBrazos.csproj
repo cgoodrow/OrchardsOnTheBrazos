@@ -205,7 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Announcement.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -213,52 +213,61 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="AspNetRole.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUser.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogin.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\EmailVerificationsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
+    <Compile Include="Document.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailVerification.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Event.cs">
-      <DependentUpon>EventsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EventsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EventsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EventsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EventsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EventsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EventsModel.edmx</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Info.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201804260058460_OrchardMigration.cs" />
     <Compile Include="Migrations\201804260058460_OrchardMigration.Designer.cs">
       <DependentUpon>201804260058460_OrchardMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Announcements.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -278,16 +287,6 @@
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
     </Content>
-    <Content Include="EventsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventsModel.edmx</DependentUpon>
-      <LastGenOutput>EventsModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EventsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventsModel.edmx</DependentUpon>
-      <LastGenOutput>EventsModel.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -297,6 +296,16 @@
     <Content Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults" />
     <None Include="Content\Site.scss" />
+    <Content Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -304,12 +313,12 @@
     </Content>
     <Content Include="Content\scss\Settings.scss" />
     <Content Include="Content\scss\Home.scss" />
-    <EntityDeploy Include="EventsModel.edmx">
+    <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EventsModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EventsModel.edmx.diagram">
-      <DependentUpon>EventsModel.edmx</DependentUpon>
+    <Content Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -377,8 +386,24 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\EmailVerifications\Create.cshtml" />
+    <Content Include="Views\EmailVerifications\Delete.cshtml" />
+    <Content Include="Views\EmailVerifications\Details.cshtml" />
+    <Content Include="Views\EmailVerifications\Edit.cshtml" />
+    <Content Include="Views\EmailVerifications\Index.cshtml" />
+    <Content Include="Views\Info\Create.cshtml" />
+    <Content Include="Views\Info\Delete.cshtml" />
+    <Content Include="Views\Info\Details.cshtml" />
+    <Content Include="Views\Info\Edit.cshtml" />
+    <Content Include="Views\Info\Index.cshtml" />
+    <Content Include="Views\Documents\Create.cshtml" />
+    <Content Include="Views\Documents\Delete.cshtml" />
+    <Content Include="Views\Documents\Details.cshtml" />
+    <Content Include="Views\Documents\Edit.cshtml" />
+    <Content Include="Views\Documents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Documents\" />
     <Folder Include="App_Data\Images\" />
   </ItemGroup>
   <ItemGroup>

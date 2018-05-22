@@ -19,6 +19,8 @@ namespace OrchardsOnTheBrazos.Models
         public int AccessFailedCount { get; set; }
         public string PhoneNumber { get; set; }
         public IEnumerable<UserRolesDTO> Roles { get; set; }
+        public string LastName { get; internal set; }
+        public string FirstName { get; internal set; }
     }
 
     public class UserRolesDTO

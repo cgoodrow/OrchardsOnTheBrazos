@@ -9,22 +9,19 @@
             <ul>
                 @Html.Partial("_LoginPartial")
                 @if (User.Identity.IsAuthenticated)
-    {
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Documentation", "Index", "Documents")</li>
-            <li>@Html.ActionLink("Events", "Events", "Home")</li>
-            <li>@Html.ActionLink("Helpful Info", "HelpfullInfo", "Home")</li>
-            <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home")</li>
-            <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
-
-
-
-}
+                {
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Documentation", "Index", "Documents")</li>
+                    <li>@Html.ActionLink("Events", "Events", "Home")</li>
+                    <li>@Html.ActionLink("Helpful Info", "HelpfullInfo", "Home")</li>
+                    <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home")</li>
+                    <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
+                }
 
                 @if (User.IsInRole("Administrator"))
-    {
-            <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
-}
+                {
+                    <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                }
             </ul>
         </div>
     </div>

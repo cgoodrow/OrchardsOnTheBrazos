@@ -12,11 +12,9 @@ namespace OrchardsOnTheBrazos
     using System;
     using System.Collections.Generic;
     
-    public partial class C__MigrationHistory
+    public partial class EmailVerification
     {
-        public string MigrationId { get; set; }
-        public string ContextKey { get; set; }
-        public byte[] Model { get; set; }
-        public string ProductVersion { get; set; }
+        public int Id { get; set; }
+        public string EmailList { get; set; }
     }
 }
