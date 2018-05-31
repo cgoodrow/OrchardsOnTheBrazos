@@ -1,5 +1,11 @@
-﻿.container-fluid {
+﻿@import 'Typography.scss';
+
+.container-fluid {
     padding: 5px;
+}
+
+.show {
+    display: block;
 }
 
 .center-block {
@@ -22,3 +28,102 @@
 .p-top-25 {
     padding-top: 25px;
 }
+
+img {
+    width: 100%;
+}
+
+.no-gutters {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.slick-next {
+    z-index: 100;
+    height: 40px !important;
+    width: 40px !important;
+    right: -20px !important;
+
+    @media (max-width: 480px) {
+        display: none !important;
+    }
+
+    &:before {
+        content: '' !important;
+        position: absolute;
+        top: 12px;
+        border-left: solid 3px #000;
+        width: 10px;
+        height: 35px;
+        transform: rotate(-135deg);
+    }
+
+    &:after {
+        content: '' !important;
+        position: absolute;
+        top: -5px;
+        border-right: solid 3px #000;
+        width: 10px;
+        height: 35px;
+        transform: rotate(-53deg);
+    }
+}
+
+.slick-prev {
+    z-index: 100;
+    height: 40px !important;
+    width: 40px !important;
+    left: -30px !important;
+
+    @media (max-width: 480px) {
+        display: none !important;
+    }
+
+    &:before {
+        content: '' !important;
+        position: absolute;
+        top: 17px;
+        border-left: solid 3px #000;
+        width: 10px;
+        height: 35px;
+        transform: rotate(134deg);
+    }
+
+    &:after {
+        content: '' !important;
+        position: absolute;
+        top: -11px;
+        border-right: solid 3px #000;
+        width: 10px;
+        height: 35px;
+        transform: rotate(53deg);
+    }
+}
+
+.slick-dots li button {
+    width: 25px !important;
+    height: 25px !important;
+    border: solid 3px $orange !important;
+    background-color: rgba(0,0,0,.2) !important;
+    border-radius: 50%;
+
+    &:before {
+        content: '' !important;
+    }
+
+    &:focus {
+        background-color: rgba(0,0,0,.7) !important;
+    }
+}
+
+.create {
+    margin-top: -21px;
+    float: left;
+    z-index: 200;
+    margin-left: 5px;
+    color: #000;
+    font-weight: 500;
+    font-style: italic;
+}
+
+

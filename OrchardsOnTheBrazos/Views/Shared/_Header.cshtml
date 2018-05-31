@@ -12,8 +12,8 @@
                 {
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Documentation", "Index", "Documents")</li>
-                    <li>@Html.ActionLink("Events", "Events", "Home")</li>
-                    <li>@Html.ActionLink("Helpful Info", "HelpfullInfo", "Home")</li>
+                    <li>@Html.ActionLink("Events", "Index", "Events")</li>
+                    <li>@Html.ActionLink("Helpful Info", "Index", "Info")</li>
                     <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home")</li>
                     <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
                 }
@@ -26,3 +26,8 @@
         </div>
     </div>
 </div>
+@if (User.IsInRole("Administrator"))
+{
+    @Html.Partial("_AdminAction")
+}
+

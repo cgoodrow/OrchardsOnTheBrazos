@@ -1,48 +1,52 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Event>
 
-@{
-    Layout = null;
+<section class="events-home">
+    @Html.ActionLink("Create New", "Create", "Events", null, new { @class = "create" })
+    <div class="col-xs-10 col-lg-7 center-block">
+
+        <h2 class="text-center">Past Events</h2>
+    </div>
+    <div class="events-slider row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-12 eventImg">
+                <p class="event-post">@Html.DisplayFor(modelItem => item.EventPost)</p>
+                <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                <div class="col-lg-4 no-gutters"> @Html.ActionLink("Edit", "Edit", new { id = item.EventId, }, new { @class = "btn btn-default adminActions" })</div>
+                <div class="col-lg-4 no-gutters">@Html.ActionLink("Details", "Details", new { id = item.EventId }, new { @class = "btn btn-default adminActions" })</div>
+                <div class="col-lg-4 no-gutters"> @Html.ActionLink("Delete", "Delete", new { id = item.EventId, }, new { @class = "btn btn-default adminActions" })</div>
+            </div>
+        }
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.events-slider').slick({
+                dots: true,
+                focusOnSelect: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                adaptiveHeight: true,
+                asNavFor: '.slider-for'
+            });
+        });        
+
+        $(document).ready(function () {
+
+            $('.eventImg').hover(
+
+                function () {
+                    var target = $(this).find("p");
+                    $(target).show();
+                },
+
+                function () {
+                    $(".event-post").hide();
+                }
+            );
+        }); 
+    </script>
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EventPost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventPicture)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventPost)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.EventPicture)*@
-                <img src="@Url.Content("~/Content/Images/")@item.EventPicture" class="img-responsive" />
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.EventId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>

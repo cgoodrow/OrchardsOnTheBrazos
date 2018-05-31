@@ -1,0 +1,50 @@
+﻿@import 'Typography.scss';
+
+
+.events-home {
+    .btn-default {
+        width: 100%;
+        font-size: .9em;
+    }
+
+    img {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 220px;
+    }
+
+    .events-slider {
+        position: relative;
+        margin-bottom: 60px;
+
+        p {
+            position: absolute;
+            display: none;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            padding: 2px 15px;            
+            color: #000;
+            font-weight: 900;
+            text-shadow: 1px 1px 0 rgba(255,255,255,1);
+            font-size: 1.3em;
+            font-family: $titillium;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding-bottom: 0;
+            max-width: 351px;
+        }
+
+        div {
+            padding-top: 15px;
+        }
+
+        .slick-prev {
+            left: -20px !important;
+        }
+
+        .slick-next {
+            right: 20px !important;
+        }
+    }
+}

@@ -21,12 +21,15 @@ namespace OrchardsOnTheBrazos
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/Slick/slick.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/PagedList.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Slick/slick.css",
+                      "~/Content/Slick/slick-theme.css"));
         }
     }
 }

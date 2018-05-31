@@ -49,7 +49,7 @@ namespace OrchardsOnTheBrazos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EventId,EventPost,EventPicture")] Event @event)
         {
-          
+
 
             if (ModelState.IsValid)
             {
@@ -57,7 +57,8 @@ namespace OrchardsOnTheBrazos.Controllers
 
                 @event.EventId = Guid.NewGuid();
 
-                if (file != null && file.FileName != null && file.FileName != "") {
+                if (file != null && file.FileName != null && file.FileName != "")
+                {
                     FileInfo fi = new FileInfo(file.FileName);
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
                     {
@@ -67,7 +68,7 @@ namespace OrchardsOnTheBrazos.Controllers
                     else
                     {
                         @event.EventPicture = @event.EventId + fi.Extension;
-                        file.SaveAs(Server.MapPath("~/Content/Images/" + @event.EventId + fi.Extension));
+                        file.SaveAs(Server.MapPath("~/Content/Temp/" + @event.EventId + fi.Extension));
                     }
                 }
 
@@ -99,12 +100,41 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventId,EventPost,EventPicture")] Event @event)
+        public ActionResult Edit([Bind(Include = "EventId,EventPost,EventPicture")] Event @event, Guid? id)
         {
+            var oldFile = @event.EventId;
+            TempData["OldFile"] = oldFile;
             if (ModelState.IsValid)
             {
+                HttpPostedFileBase file = Request.Files["EventPicture"];
+                if (file != null && file.FileName != null && file.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                        return View();
+                    }
+                    else
+                    {
+                        string fullPath = Request.MapPath("~/Content/Temp/" + @event.EventId + fi.Extension);
+
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+
+                        @event.EventPicture = @event.EventId + fi.Extension;
+
+                        file.SaveAs(Server.MapPath("~/Content/Temp/" + @event.EventId + fi.Extension));
+
+                        @event.EventPicture = @event.EventId + fi.Extension;
+                    }
+                }
+
                 db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
+                //Response.Redirect(Request.Url.AbsoluteUri);
                 return RedirectToAction("Index");
             }
             return View(@event);
