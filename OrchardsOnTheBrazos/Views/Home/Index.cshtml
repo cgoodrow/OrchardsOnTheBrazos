@@ -1,12 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
-}
+    ViewBag.Title = "Home Page";}
 
-<section class="login-page">   
-    <div class="col-lg-10 center-block">
+<section class="login-page">
+    @Html.ActionLink("Create New", "Create", "Announcements", null, new { @class = "create" })
+    <div class="col-lg-12 center-block">
         <div class="content-main">
             <div class="content-box">
-                <h2 class="text-center">Announcements</h2>
+                <div class="row">
+                    <h2 class="text-center">Announcements</h2>
+                </div>
                 @if (User.Identity.IsAuthenticated)
                 {
                     @Html.Action("_Announcements", "Announcements")
@@ -20,3 +22,28 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.one-time').slick({
+                dots: true,
+                focusOnSelect: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                asNavFor: '.slider-for'
+            });
+        });
+
+        $(window).width(function () {
+            if ($(window).width() < 480) {
+                $("[Name = 'Create']").text("Create");
+            }
+            else {
+            }
+        });
+       
+    </script>
+}

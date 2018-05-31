@@ -51,7 +51,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Announcement")] Announcements announcements)
+        public ActionResult Create([Bind(Include = "Id,Title,Date,Announcement")] Announcements announcements)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Announcement")] Announcements announcements)
+        public ActionResult Edit([Bind(Include = "Id,Title,Date,Announcement")] Announcements announcements)
         {
             if (ModelState.IsValid)
             {

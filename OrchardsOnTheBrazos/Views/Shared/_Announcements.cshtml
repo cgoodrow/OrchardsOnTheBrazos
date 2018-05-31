@@ -1,21 +1,27 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Announcements>
-
-<p>
-</p>
-<div class="row">
-    @foreach (var item in Model)
+<section>
+    <div class="row">        
+        @foreach (var item in Model)
     {
-        <h3 class="text-center">@Html.DisplayFor(modelItem => item.Title)</h3>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <h3>
+                @Html.DisplayFor(modelItem => item.Title)
+                <br /><span> @Html.DisplayFor(modelItem => item.Date)</span>
+            </h3>
 
-        <p>
-            @Html.DisplayFor(modelItem => item.Announcement)<br /><br />
-            @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
+            <p>
+                @Html.DisplayFor(modelItem => item.Announcement)
+            </p>
+            <div class="row">
+                @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
             {
-                <span>@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) </span>
-                <span>@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" }) </span>
-                <span>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" }) </span>
-                <span>@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })</span>
-            }
-        </p>
-    }
-</div>
+                <span>@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default adminActions" }) </span>
+                <span>@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default adminActions" }) </span>
+                <span>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default adminActions" }) </span>
+        }
+            </div>
+        </div>
+}
+    </div>
+</section>
+
