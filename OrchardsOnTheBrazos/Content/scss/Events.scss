@@ -1,0 +1,38 @@
+﻿@import 'Typography.scss';
+
+
+.events-home {   
+
+    img {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .info-box {
+        position: relative;
+       
+        p {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            padding: 2px 15px;
+            color: #fff;
+            font-size: 1.2em;
+            font-family: $robot-slab;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-bottom: 0;
+
+            a, span {
+                text-shadow: none;
+                font-weight: normal;
+
+                
+            }
+        }       
+    }
+}

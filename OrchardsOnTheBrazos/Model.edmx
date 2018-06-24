@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Announcement" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -73,13 +74,6 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DocumentDate" Type="nvarchar(max)" />
           <Property Name="Document" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="EmailVerification">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmailList" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Events">
           <Key>
@@ -161,7 +155,6 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EmailVerification" EntityType="Self.EmailVerification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Info" EntityType="Self.Info" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -192,6 +185,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Announcement1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -244,13 +238,6 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="EmailVerification">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmailList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="EventId" />
@@ -297,7 +284,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="EmailVerifications" EntityType="Self.EmailVerification" />
           <EntitySet Name="Events" EntityType="Self.Event" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -339,6 +325,7 @@
           <EntitySetMapping Name="Announcements">
             <EntityTypeMapping TypeName="Model.Announcement">
               <MappingFragment StoreEntitySet="Announcements">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Announcement1" ColumnName="Announcement" />
@@ -389,14 +376,6 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EmailVerifications">
-            <EntityTypeMapping TypeName="Model.EmailVerification">
-              <MappingFragment StoreEntitySet="EmailVerification">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EmailList" ColumnName="EmailList" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

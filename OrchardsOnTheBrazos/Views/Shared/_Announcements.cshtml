@@ -1,21 +1,27 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Announcements>
-
-<p>
-</p>
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <h3 class="text-center">@Html.DisplayFor(modelItem => item.Title)</h3>
-
-        <p>
-            @Html.DisplayFor(modelItem => item.Announcement)<br /><br />
-            @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
-            {
-                <span>@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) </span>
-                <span>@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" }) </span>
-                <span>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" }) </span>
-                <span>@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })</span>
-            }
-        </p>
-    }
+<div class="col-lg-12 center-block no-gutters">
+    <h2 class="text-center">Announcements</h2>
 </div>
+@foreach (var item in Model)
+{
+    <div class="col-lg-6 no-gutters info">
+        <div class="info-box">
+            <h5 class="text-center">
+                @Html.DisplayFor(modelItem => item.Title)
+                <br /> <span>@Html.DisplayFor(modelItem => item.Date)</span>
+            </h5>
+            <p>
+                @Html.DisplayFor(modelItem => item.Announcement)
+                <br /><br />
+                @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "adminActions" }) <span>|</span>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = " adminActions" }) <span>|</span>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "adminActions" })
+                }
+            </p>
+        </div>
+    </div>
+}
+
+
