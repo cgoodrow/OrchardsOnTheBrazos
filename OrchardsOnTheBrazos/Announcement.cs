@@ -17,5 +17,6 @@ namespace OrchardsOnTheBrazos
         public int Id { get; set; }
         public string Title { get; set; }
         public string Announcement1 { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     }
 }

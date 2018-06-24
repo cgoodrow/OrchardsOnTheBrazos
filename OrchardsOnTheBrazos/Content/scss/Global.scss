@@ -1,17 +1,9 @@
 ﻿@import 'Typography.scss';
 
-.container-fluid {
-    padding: 5px;
-}
-
-.show {
-    display: block;
-}
-
 .center-block {
     margin: 0 auto;
     display: block;
-    float: none;
+    float: left;   
 }
 
 .m-top-50 {
@@ -117,13 +109,17 @@ img {
 }
 
 .create {
-    margin-top: -21px;
     float: left;
     z-index: 200;
     margin-left: 5px;
-    color: #000;
+    color: $orange;
     font-weight: 500;
     font-style: italic;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 

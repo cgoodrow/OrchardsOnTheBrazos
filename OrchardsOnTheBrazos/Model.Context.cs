@@ -30,7 +30,6 @@ namespace OrchardsOnTheBrazos
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<EmailVerification> EmailVerifications { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Info> Infoes { get; set; }
         public virtual DbSet<Document> Documents { get; set; }

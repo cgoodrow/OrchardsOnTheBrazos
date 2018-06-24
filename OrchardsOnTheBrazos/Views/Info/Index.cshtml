@@ -1,39 +1,37 @@
-﻿@model IEnumerable<OrchardsOnTheBrazos.Info>
+﻿
+@model IEnumerable<OrchardsOnTheBrazos.Info>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<section class="info">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "create adminActions" })
+    <div class="col-lg-12 center-block">
+        <h2 class="text-center">Helpful Info</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 no-gutters center-block">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 no-gutters">
+                    <div class="info-box">
+                        <h5 class="text-center">@Html.DisplayFor(modelItem => item.heading_one)</h5>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.heading_one)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.paragraph_one)
-        </th>
-        <th></th>
-    </tr>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.paragraph_one) <br /><br />
+                            @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "adminActions" }) <span>|</span>
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "adminActions" }) <span>|</span>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "adminActions" })
+                            }
+                        </p>
+                    </div>
+                </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.heading_one)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.paragraph_one)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            }
+        </div>
+    </div>
+</section>
 
-</table>
