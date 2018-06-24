@@ -228,15 +228,11 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
-    <Compile Include="Controllers\EmailVerificationsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Document.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmailVerification.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Event.cs">
@@ -280,6 +276,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Home\tree-bg.png" />
+    <Content Include="Content\Images\Home\walnuts.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
@@ -300,6 +297,7 @@
     <Content Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults" />
     <Content Include="Content\scss\Events.scss" />
+    <Content Include="Content\scss\Layout.scss" />
     <None Include="Content\Site.scss" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -330,6 +328,7 @@
     <Content Include="Content\Slick\fonts\slick.woff" />
     <Content Include="Content\Slick\slick-theme.scss" />
     <Content Include="Content\Slick\slick.scss" />
+    <None Include="Properties\PublishProfiles\OrchardsOnTheBrazos20180616111740 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Editor.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -399,11 +398,6 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\EmailVerifications\Create.cshtml" />
-    <Content Include="Views\EmailVerifications\Delete.cshtml" />
-    <Content Include="Views\EmailVerifications\Details.cshtml" />
-    <Content Include="Views\EmailVerifications\Edit.cshtml" />
-    <Content Include="Views\EmailVerifications\Index.cshtml" />
     <Content Include="Views\Info\Create.cshtml" />
     <Content Include="Views\Info\Delete.cshtml" />
     <Content Include="Views\Info\Details.cshtml" />
