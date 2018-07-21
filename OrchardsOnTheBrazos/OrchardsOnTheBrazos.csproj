@@ -243,9 +243,9 @@
     <Compile Include="Info.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807211946022_OrchardOnTheBrazos.cs" />
-    <Compile Include="Migrations\201807211946022_OrchardOnTheBrazos.Designer.cs">
-      <DependentUpon>201807211946022_OrchardOnTheBrazos.cs</DependentUpon>
+    <Compile Include="Migrations\201804260058460_OrchardMigration.cs" />
+    <Compile Include="Migrations\201804260058460_OrchardMigration.Designer.cs">
+      <DependentUpon>201804260058460_OrchardMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model.Context.cs">
@@ -265,10 +265,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Announcements.cs" />
-    <Compile Include="Models\FileDetail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Support.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -424,12 +422,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\201804260058460_OrchardMigration.resx">
+      <DependentUpon>201804260058460_OrchardMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807211946022_OrchardOnTheBrazos.resx">
-      <DependentUpon>201807211946022_OrchardOnTheBrazos.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

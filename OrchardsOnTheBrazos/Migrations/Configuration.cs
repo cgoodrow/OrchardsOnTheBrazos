@@ -9,7 +9,7 @@ namespace OrchardsOnTheBrazos.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(OrchardsOnTheBrazos.Models.ApplicationDbContext context)
