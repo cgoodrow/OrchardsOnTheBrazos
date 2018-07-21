@@ -7,18 +7,18 @@ namespace OrchardsOnTheBrazos.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class OrchardMigration : IMigrationMetadata
+    public sealed partial class OrchardOnTheBrazos : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(OrchardMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(OrchardOnTheBrazos));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804260058460_OrchardMigration"; }
+            get { return "201807211946022_OrchardOnTheBrazos"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target
