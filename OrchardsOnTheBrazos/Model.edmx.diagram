@@ -14,8 +14,10 @@
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.Info" Width="1.5" PointX="6.625" PointY="6.75" />
-        <EntityTypeShape EntityType="Model.Document" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.FileDetail" Width="1.5" PointX="9.25" PointY="1.25" />
+        <EntityTypeShape EntityType="Model.Support" Width="1.5" PointX="7" PointY="1.375" />
+        <AssociationConnector Association="Model.FK_dbo_FileDetails_dbo_Supports_SupportId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

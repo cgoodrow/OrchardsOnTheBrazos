@@ -12,10 +12,13 @@ namespace OrchardsOnTheBrazos
     using System;
     using System.Collections.Generic;
     
-    public partial class Info
+    public partial class FileDetail
     {
-        public int Id { get; set; }
-        public string heading_one { get; set; }
-        public string paragraph_one { get; set; }
+        public System.Guid Id { get; set; }
+        public string FileName { get; set; }
+        public string Extension { get; set; }
+        public int SupportId { get; set; }
+    
+        public virtual Support Support { get; set; }
     }
 }

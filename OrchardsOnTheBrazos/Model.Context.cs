@@ -31,7 +31,8 @@ namespace OrchardsOnTheBrazos
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<Info> Infoes { get; set; }
-        public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<FileDetail> FileDetails { get; set; }
+        public virtual DbSet<Support> Supports { get; set; }
     }
 }

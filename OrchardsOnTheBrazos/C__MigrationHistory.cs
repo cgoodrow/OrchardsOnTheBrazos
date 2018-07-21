@@ -12,10 +12,11 @@ namespace OrchardsOnTheBrazos
     using System;
     using System.Collections.Generic;
     
-    public partial class Document
+    public partial class C__MigrationHistory
     {
-        public System.Guid Id { get; set; }
-        public string DocumentDate { get; set; }
-        public string Document1 { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
