@@ -412,10 +412,10 @@
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\Shared\_AdminAction.cshtml" />
     <Content Include="Views\Supports\Index.cshtml" />
-    <Content Include="Views\Supports\Edit.cshtml" />
     <Content Include="Views\Shared\_CreateDocumentModal.cshtml" />
     <Content Include="Views\Shared\_EditDocumentModal.cshtml" />
     <Content Include="Views\Supports\_Edit.cshtml" />
+    <Content Include="Views\Supports\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Documents\" />

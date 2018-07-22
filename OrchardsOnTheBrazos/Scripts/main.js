@@ -5,6 +5,17 @@
 function RenderActions(RenderActionstring) {
     $("#OpenDialog").load(RenderActionstring);
 };
+
+function DeleteEmp(id) {
+    document.getElementById(id).remove();
+    $.ajax({
+        url: '/Supports/Delete/' + id,
+        data: $('form').serialize(),
+        type: 'POST',
+        success: function () { $('#close').click(); },
+        error: function (err) { alert("Error: " + err.responseText); }
+    });
+};
     
 function EditSupport(id) {
     if (!ValidateInputs())

@@ -41,7 +41,7 @@
                 @*<a data-toggle="modal" onClick="RenderActions('/Supports/Edit/' + @item.SupportId)" data-target="#editModal">Edit</a>*@
                 <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
                 |
-                <a href="javascript:void(0);" data-id="@item.SupportId" class="deleteItem">Delete</a>
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
             </td>
         </tr>
     }
@@ -58,33 +58,3 @@
 </div>
 
 @Html.Action("_CreateDocumentModal", "Supports")
-
-@section Scripts {
-<script>
-        $('.deleteItem').click(function (e) {
-           e.preventDefault();
-           var $ctrl = $(this);
-           if (confirm('Do you really want to delete this item?')) {
-               $.ajax({
-                   url: '@Url.Action("Delete")',
-                   type: 'POST',
-                   data: { id: $(this).data('id') }
-               }).done(function (data) {
-                   if (data.Result == "OK") {
-                       $ctrl.closest('tr').remove();
-                   }
-                   else if (data.Result.Message) {
-                       alert(data.Result.Message);
-                   }
-               }).fail(function () {
-                   alert("There is something wrong. Please try again.");
-               })
-
-           }
-    });
-    $('#close').click(function () {
-        console.log("close");
-    })
-</script>
-
-    }

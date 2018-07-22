@@ -158,7 +158,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(support);
+            return PartialView("_Delete", support);
         }
 
         // POST: Supports/Delete/5
@@ -167,81 +167,92 @@ namespace OrchardsOnTheBrazos.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Support support = db.Supports.Find(id);
+
+            //delete files from the file system
+
+            //foreach (var item in support.FileDetails)
+            //{
+            //    String path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.Id + item.Extension);
+            //    if (System.IO.File.Exists(path))
+            //    {
+            //        System.IO.File.Delete(path);
+            //    }
+            //}
             db.Supports.Remove(support);
-            db.SaveChanges();
+            Json(db.SaveChanges());
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public JsonResult DeleteFile(string id)
-        {
-            if (String.IsNullOrEmpty(id))
-            {
-                Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json(new { Result = "Error" });
-            }
-            try
-            {
-                Guid guid = new Guid(id);
-                FileDetail fileDetail = db.FileDetail.Find(guid);
-                if (fileDetail == null)
-                {
-                    Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    return Json(new { Result = "Error" });
-                }
+        //[HttpPost]
+        //public JsonResult DeleteFile(string id)
+        //{
+        //    if (String.IsNullOrEmpty(id))
+        //    {
+        //        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        //        return Json(new { Result = "Error" });
+        //    }
+        //    try
+        //    {
+        //        Guid guid = new Guid(id);
+        //        FileDetail fileDetail = db.FileDetail.Find(guid);
+        //        if (fileDetail == null)
+        //        {
+        //            Response.StatusCode = (int)HttpStatusCode.NotFound;
+        //            return Json(new { Result = "Error" });
+        //        }
 
-                //Remove from database
-                db.FileDetail.Remove(fileDetail);
-                db.SaveChanges();
+        //        //Remove from database
+        //        db.FileDetail.Remove(fileDetail);
+        //        db.SaveChanges();
 
-                //Delete file from the file system
-                var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
-                if (System.IO.File.Exists(path))
-                {
-                    System.IO.File.Delete(path);
-                }
-                return Json(new { Result = "OK" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Result = "ERROR", Message = ex.Message });
-            }
-        }
-         //
-        // POST: /Support/Delete/5
+        //        //Delete file from the file system
+        //        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
+        //        if (System.IO.File.Exists(path))
+        //        {
+        //            System.IO.File.Delete(path);
+        //        }
+        //        return Json(new { Result = "OK" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { Result = "ERROR", Message = ex.Message });
+        //    }
+        //}
+        // //
+        //// POST: /Support/Delete/5
 
-        [HttpPost]
-        public JsonResult Delete(int id)
-        {
-            try
-            {
-                Support support = db.Supports.Find(id);
-                if (support == null)
-                {
-                    Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    return Json(new { Result = "Error" });
-                }
+        //[HttpPost]
+        //public JsonResult Delete(int id)
+        //{
+        //    try
+        //    {
+        //        Support support = db.Supports.Find(id);
+        //        if (support == null)
+        //        {
+        //            Response.StatusCode = (int)HttpStatusCode.NotFound;
+        //            return Json(new { Result = "Error" });
+        //        }
 
-                //delete files from the file system
+        //        //delete files from the file system
 
-                foreach (var item in support.FileDetails)
-                {
-                    String path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.Id + item.Extension);
-                    if (System.IO.File.Exists(path))
-                    {
-                        System.IO.File.Delete(path);
-                    }
-                }
+        //        foreach (var item in support.FileDetails)
+        //        {
+        //            String path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.Id + item.Extension);
+        //            if (System.IO.File.Exists(path))
+        //            {
+        //                System.IO.File.Delete(path);
+        //            }
+        //        }
 
-                db.Supports.Remove(support);
-                db.SaveChanges();
-                return Json(new { Result = "OK" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Result = "ERROR", Message = ex.Message });
-            }
-        }
+        //        db.Supports.Remove(support);
+        //        db.SaveChanges();
+        //        return Json(new { Result = "OK" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { Result = "ERROR", Message = ex.Message });
+        //    }
+        //}
 
         protected override void Dispose(bool disposing)
         {
