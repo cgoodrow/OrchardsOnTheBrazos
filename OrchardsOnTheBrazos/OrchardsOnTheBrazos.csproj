@@ -230,6 +230,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SupportsController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -242,9 +243,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807212334549_initialCreate.cs" />
-    <Compile Include="Migrations\201807212334549_initialCreate.Designer.cs">
-      <DependentUpon>201807212334549_initialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201807212348518_initialCreate.cs" />
+    <Compile Include="Migrations\201807212348518_initialCreate.Designer.cs">
+      <DependentUpon>201807212348518_initialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model.Context.cs">
@@ -407,9 +408,9 @@
     <Content Include="Views\Info\Edit.cshtml" />
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\Shared\_AdminAction.cshtml" />
-    <Content Include="Views\Support\Create.cshtml" />
-    <Content Include="Views\Support\Edit.cshtml" />
-    <Content Include="Views\Support\Index.cshtml" />
+    <Content Include="Views\Supports\Index.cshtml" />
+    <Content Include="Views\Supports\Create.cshtml" />
+    <Content Include="Views\Supports\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Documents\" />
@@ -432,8 +433,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807212334549_initialCreate.resx">
-      <DependentUpon>201807212334549_initialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807212348518_initialCreate.resx">
+      <DependentUpon>201807212348518_initialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
