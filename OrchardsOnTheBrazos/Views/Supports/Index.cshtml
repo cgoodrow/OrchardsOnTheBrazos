@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Support>
 
-@{
-    ViewBag.Title = "Index";
-}
-
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+        Create
+    </button></p>
 <table class="table">
     <tr>
         <th>
@@ -41,13 +38,14 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SupportId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.SupportId}) |
                 <a href="javascript:void(0);" data-id="@item.SupportId" class="deleteItem">Delete</a>
             </td>
         </tr>
     }
 
 </table>
+@Html.Action("_CreateDocumentModal", "Supports")
 
 @section Scripts {
     <script>
