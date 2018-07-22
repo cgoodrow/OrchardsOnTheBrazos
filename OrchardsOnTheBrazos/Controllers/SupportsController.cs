@@ -16,6 +16,11 @@ namespace OrchardsOnTheBrazos.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Supports
+        public ActionResult _CreateDocumentModal()
+        {
+            return PartialView();
+        }
+        
         public ActionResult Index()
         {
             return View(db.Supports.ToList());
