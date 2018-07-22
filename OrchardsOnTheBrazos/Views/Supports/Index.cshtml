@@ -66,7 +66,7 @@
            var $ctrl = $(this);
            if (confirm('Do you really want to delete this item?')) {
                $.ajax({
-                   url: '/Support/Delete',
+                   url: '@Url.Action("Delete")',
                    type: 'POST',
                    data: { id: $(this).data('id') }
                }).done(function (data) {
