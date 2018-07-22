@@ -20,7 +20,7 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             return PartialView();
         }
-        
+
         public ActionResult Index()
         {
             return View(db.Supports.ToList());
@@ -85,7 +85,10 @@ namespace OrchardsOnTheBrazos.Controllers
 
             return View(support);
         }
-
+        //public ActionResult _Edit()
+        //{
+        //    return PartialView();
+        //}
         // GET: Supports/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -98,7 +101,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(support);
+            return PartialView("_Edit", support);
         }
 
         // POST: Supports/Edit/5
