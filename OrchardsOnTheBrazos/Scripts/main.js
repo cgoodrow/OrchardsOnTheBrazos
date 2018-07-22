@@ -6,7 +6,7 @@ function RenderActions(RenderActionstring) {
     $("#OpenDialog").load(RenderActionstring);
 };
 
-function DeleteEmp(id) {
+function DeleteSupport(id) {
     document.getElementById(id).remove();
     $.ajax({
         url: '/Supports/Delete/' + id,
