@@ -1,66 +1,57 @@
 ﻿@model OrchardsOnTheBrazos.Support
 
-@*<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
-    <div class="modal-dialog" role="document" id="editModal">
-        <div class="modal-content">*@
-            <div class="modal-header">
-                <button class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">Edit Documents</h5>
+<div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Edit Documents</h4>
+</div>
+<div class="modal-body">
+    @using (Html.BeginForm("Edit", "Supports", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.SupportId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="modal-body">
-                @using (Html.BeginForm("Edit", "Supports", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-horizontal">
-                        <h4>Support</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.SupportId)
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-md-2">Files:</div>
+                <div class="col-md-10">
+                    <Label class="file-label">
+                        <input type="file" name="file" multiple="multiple" />
+                    </Label>
+                    <ul class="list-group">
+                        @foreach (var item in Model.FileDetails)
+                        {
+                            <li class="list-group-item">
+                                <a class="title" href="/Supports/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                                <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="control-label col-md-2">Files:</div>
-                            <div class="col-md-3">
-                                <Label class="file-label">
-                                    <input type="file" name="file" multiple="multiple" />
-                                </Label>
-                                <ul class="list-group">
-                                    @foreach (var item in Model.FileDetails)
-                                    {
-                                        <li class="list-group-item">
-                                            <a class="title" href="/Supports/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
-                                            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-default" />
-                            </div>
-                        </div>
-                    </div>
-                }
-                <div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />|
                     @Html.ActionLink("Back to List", "Index")
                 </div>
             </div>
-        @*</div>
-    </div>
-</div>*@
+        </div>
+    }
+</div>
+
