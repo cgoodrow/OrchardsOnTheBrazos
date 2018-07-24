@@ -1,5 +1,9 @@
 ﻿@import 'Typography.scss';
 
+a {
+    cursor: pointer;
+}
+
 .center-block {
     margin: 0 auto;
     display: block;
@@ -112,6 +116,7 @@ img {
     float: left;
     z-index: 200;
     margin-left: 5px;
+    margin-top: -12px;
     color: $orange;
     font-weight: 500;
     font-style: italic;
@@ -121,5 +126,15 @@ img {
     margin-left: 0;
     margin-right: 0;
 }
+
+.text-area {
+    width: 100%;
+    border: solid 1px #d4d4d4;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    border-radius: 5px;
+    padding: .875rem .5rem;
+    height: 22vh !important;
+}
+
 
 

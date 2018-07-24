@@ -15,7 +15,7 @@
                 <br /><br />
                 @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "adminActions" }) <span>|</span>
+                      <a data-toggle="modal" data-target="#modalCreate" class="adminActions" onclick="RenderActions('/Announcements/Edit/' + @item.Id)">Edit</a> <span>|</span>
                     @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = " adminActions" }) <span>|</span>
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "adminActions" })
                 }

@@ -35,3 +35,22 @@ function EditSupport(id) {
         error: function (err) { alert("Error: " + err.responseText); }
     })
 };
+
+function EditAnnouncements(id) {
+    if (!ValidateInputs())
+        return;
+    $.ajax({
+        url: '/Announcements/Edit/' + id,
+        type: 'POST',
+        data: $('form').serialize(),
+        success: function (res) {
+            var keys = ["Id", "Title", "Date", "Announcement"];
+            $('#' + res.Id + ' td').each(function (i) {
+                $(this).text(res[keys[i]]);
+            })
+            console.log("modal");
+            $(".close").click();
+        },
+        error: function (err) { alert("Error: " + err.responseText); }
+    })
+};

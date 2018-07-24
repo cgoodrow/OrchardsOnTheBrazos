@@ -75,7 +75,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(announcements);
+            return PartialView("_Edit", announcements);
         }
 
         // POST: Announcements/Edit/5
