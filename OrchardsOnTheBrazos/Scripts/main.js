@@ -54,3 +54,33 @@ function EditAnnouncements(id) {
         error: function (err) { alert("Error: " + err.responseText); }
     })
 };
+
+function DeleteAnnouncements(id) {
+    document.getElementById(id).remove();
+    $.ajax({
+        url: '/Announcements/Delete/' + id,
+        data: $('form').serialize(),
+        type: 'POST',
+        success: function () { $('#close').click(); },
+        error: function (err) { alert("Error: " + err.responseText); }
+    });
+};
+
+function Details(id) {
+    if (!ValidateInputs())
+        return;
+    $.ajax({
+        url: '/Announcements/Details/' + id,
+        type: 'POST',
+        data: $('form').serialize(),
+        success: function (res) {
+            var keys = ["Id", "Title", "Date", "Announcement"];
+            $('#' + res.Id + ' td').each(function (i) {
+                $(this).text(res[keys[i]]);
+            })
+            console.log("modal");
+            $(".close").click();
+        },
+        error: function (err) { alert("Error: " + err.responseText); }
+    })
+};

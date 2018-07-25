@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Event>
 
 <section class="events-home info">
-    @Html.ActionLink("Create New", "Create", "Events", null, new { @class = "create adminActions" })
+    <button type="button" class="btn btn-default adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
     <div class="col-lg-12 center-block">
         <h2 class="text-center">Events</h2>
     </div>
@@ -28,6 +28,8 @@
         </div>
     </div>
 </section>
+
+@Html.Action("_Create");
 
 @section Scripts {
     <script>

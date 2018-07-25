@@ -37,9 +37,9 @@ namespace OrchardsOnTheBrazos.Controllers
         }
 
         // GET: Events/Create
-        public ActionResult Create()
+        public ActionResult _Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Events/Create

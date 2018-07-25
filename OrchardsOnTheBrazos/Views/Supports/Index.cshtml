@@ -41,7 +41,7 @@
                 @*<a data-toggle="modal" onClick="RenderActions('/Supports/Edit/' + @item.SupportId)" data-target="#editModal">Edit</a>*@
                 <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
                 |
-                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
             </td>
         </tr>
     }

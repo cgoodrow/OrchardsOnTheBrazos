@@ -4,15 +4,20 @@ a {
     cursor: pointer;
 }
 
+h2 {
+    margin-top: .5rem;
+}
+
 .center-block {
     margin: 0 auto;
     display: block;
-    float: left;   
+    float: left;
 }
 
 .m-top-50 {
     margin-top: 50px;
 }
+
 .m-top-25 {
     margin-top: 25px;
 }
@@ -113,13 +118,11 @@ img {
 }
 
 .create {
-    float: left;
-    z-index: 200;
-    margin-left: 5px;
-    margin-top: -12px;
-    color: $orange;
+    position: absolute;
+    top: 2px;
     font-weight: 500;
-    font-style: italic;
+    z-index: 100;
+    cursor: pointer;
 }
 
 .row {
@@ -136,5 +139,13 @@ img {
     height: 22vh !important;
 }
 
+.modal-header {
+    padding: 1.1rem;
+}
 
-
+.modal-body {
+    padding-top: 5px;
+    h3 {
+        margin: 0 0 5px 0;
+    }
+}
