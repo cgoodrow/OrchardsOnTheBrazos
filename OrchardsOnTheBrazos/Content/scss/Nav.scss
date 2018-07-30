@@ -29,23 +29,8 @@
 }
 
 .admin {
-    position: fixed;
-    color: #000;
-    font-weight: 500;
-    font-style: italic;
-    background-color: #d1a017;
-    padding: 5px;
+    position: absolute;
+    top: 265px;
     right: 0;
-    top: 263px;
-    border-radius: 5px;
     z-index: 150;
-
-
-    button {
-        display: block;
-        float: left;
-        background-color: #fff;
-        color: red;
-        width: 100%;
-    }
 }

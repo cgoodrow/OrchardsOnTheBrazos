@@ -1,33 +1,22 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Support>
 
-<h2>Index</h2>
-
-<p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+<section class="row info">
+    <button type="button" class="create btn btn-warning adminActions" data-toggle="modal" data-target="#createModal">
         Create
-    </button></p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Summary)
-        </th>
-        <th>Total Files</th>
-        <th></th>
-    </tr>
+    </button>
+    <div class="col-md-12 center-block">
+        <h2 class="text-center">Meeting Documents</h2>
+    </div>
+</section>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
+@foreach (var item in Model)
+{
+    <div class="accordion" id="accordion">
+        <div class="card">
+            <div data-toggle="collapse" data-target="@item.SupportId" aria-expanded="true" aria-controls="@item.SupportId" class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
+            <div id="@item.SupportId" class="collapse show card-body" aria-labelledby="headingOne" data-parent="#accordion">
                 @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
+
                 @if (item.FileDetails.Count() == 0)
                 {
                     <span>No File</span>
@@ -36,16 +25,13 @@
                 {
                     <span>@item.FileDetails.Count() File(s)</span>
                 }
-            </td>
-            <td>
-                @*<a data-toggle="modal" onClick="RenderActions('/Supports/Edit/' + @item.SupportId)" data-target="#editModal">Edit</a>*@
-                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
                 |
-                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
-            </td>
-        </tr>
-    }
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger adminActions" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
+            </div>
+        </div>
+    </div>
+}
 
-</table>
 @Html.Partial("_CreateModal")
 @Html.Action("_CreateDocumentModal", "Supports")

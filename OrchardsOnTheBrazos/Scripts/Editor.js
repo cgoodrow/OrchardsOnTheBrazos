@@ -2,14 +2,15 @@
     $(".adminActions").hide();
     $(".info-box > p > span").hide();
 
-    $(".on").click(function () {
-        $(".adminActions").show();
-        $(".info-box > p > span").show();
-
-    });
-
-    $(".off").click(function () {
-        $(".adminActions").hide();
-        $(".info-box > p > span").hide();
+    $("#toggleSwitch").change(function () {
+        var toggle = $('.toggle');
+        var toggleClass = $(toggle).hasClass("off")
+        if (toggleClass) {
+            $(".adminActions").hide();
+        }
+        else {
+            $(".adminActions").show();
+        }
     });
 });
+

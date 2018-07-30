@@ -66,7 +66,7 @@ function DeleteAnnouncements(id) {
     });
 };
 
-function Details(id) {
+function DetailsAnnouncements(id) {
     if (!ValidateInputs())
         return;
     $.ajax({
@@ -83,4 +83,53 @@ function Details(id) {
         },
         error: function (err) { alert("Error: " + err.responseText); }
     })
+};
+
+function EditEvents(id) {
+    if (!ValidateInputs())
+        return;
+    $.ajax({
+        url: '/Events/Edit/' + id,
+        type: 'POST',
+        data: $('form').serialize(),
+        success: function (res) {
+            var keys = ["EventId", "EventPost", "EventPicture"];
+            $('#' + res.Id + ' td').each(function (i) {
+                $(this).text(res[keys[i]]);
+            })
+            console.log("modal");
+            $(".close").click();
+        },
+        error: function (err) { alert("Error: " + err.responseText); }
+    })
+};
+
+function DetailsEvents(id) {
+    if (!ValidateInputs())
+        return;
+    $.ajax({
+        url: '/Events/Details/' + id,
+        type: 'POST',
+        data: $('form').serialize(),
+        success: function (res) {
+            var keys = ["EventId", "EventPost", "EventPicture"];
+            $('#' + res.Id + ' td').each(function (i) {
+                $(this).text(res[keys[i]]);
+            })
+            console.log("modal");
+            $(".close").click();
+        },
+        error: function (err) { alert("Error: " + err.responseText); }
+    })
+};
+
+function DeleteEvent(id) {
+    document.getElementById(id).remove();
+    $.ajax({
+        url: '/Events/Delete/' + id,
+        data: $('form').serialize(),
+        type: 'POST',
+        success: function () { $('.close').click(); },
+        error: function (err) { alert("Error: " + err.responseText); }
+    });
 };

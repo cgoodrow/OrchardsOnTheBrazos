@@ -11,11 +11,14 @@ namespace OrchardsOnTheBrazos
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Event
     {
         public System.Guid EventId { get; set; }
+        [Display(Name = "Post")]
         public string EventPost { get; set; }
+        [Display(Name = "Image")]
         public string EventPicture { get; set; }
     }
 }

@@ -344,6 +344,7 @@
     <Content Include="compilerconfig.json.defaults" />
     <Content Include="Content\scss\Events.scss" />
     <Content Include="Content\scss\Layout.scss" />
+    <Content Include="Content\bootstrap-toggle.less" />
     <None Include="Content\Site.scss" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -355,6 +356,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

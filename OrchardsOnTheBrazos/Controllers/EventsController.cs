@@ -33,7 +33,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return PartialView("_Details", @event);
         }
 
         // GET: Events/Create
@@ -43,7 +43,7 @@ namespace OrchardsOnTheBrazos.Controllers
         }
 
         // POST: Events/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you waFnt to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,7 +92,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return PartialView("_Edit", @event);
         }
 
         // POST: Events/Edit/5
@@ -113,7 +113,7 @@ namespace OrchardsOnTheBrazos.Controllers
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
                     {
                         TempData["Errormsg"] = "Image File Extension is Not valid";
-                        return View();
+                        return RedirectToAction("Index", "Events");
                     }
                     else
                     {
@@ -152,7 +152,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return PartialView("_Delete", @event);
         }
 
         // POST: Events/Delete/5

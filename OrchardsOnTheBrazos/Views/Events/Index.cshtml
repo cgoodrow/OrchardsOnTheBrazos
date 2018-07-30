@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Event>
 
 <section class="events-home info">
-    <button type="button" class="btn btn-default adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
+    <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
     <div class="col-lg-12 center-block">
         <h2 class="text-center">Events</h2>
     </div>
@@ -13,12 +13,11 @@
                     <div class="info-box">
                         <p>
                             @Html.DisplayFor(modelItem => item.EventPost)<br /><br />
-                            @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
-                            {
-                                @Html.ActionLink("Edit", "Edit", new { id = item.EventId, }, new { @class = "adminActions" })<span>|</span>
-                                @Html.ActionLink("Details", "Details", new { id = item.EventId }, new { @class = "adminActions" })<span>|</span>
-                                @Html.ActionLink("Delete", "Delete", new { id = item.EventId, }, new { @class = "adminActions" })
-                            }
+                            <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
+                            <span>|</span>
+                            <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
+                            <span>|</span>
+                            <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Events/Delete/@item.EventId')">Delete</button>
                         </p>
 
                         <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
@@ -29,6 +28,7 @@
     </div>
 </section>
 
+@Html.Partial("_CreateModal")
 @Html.Action("_Create");
 
 @section Scripts {
@@ -48,4 +48,15 @@
             );
         });
     </script>
+    @if (TempData["Errormsg"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                console.log("success");
+                $('#errorModal').modal(function () {
+                    this.show();
+                });
+            });
+        </script>
+    }
 }
