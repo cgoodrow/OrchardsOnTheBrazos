@@ -16,6 +16,17 @@ function DeleteSupport(id) {
         error: function (err) { alert("Error: " + err.responseText); }
     });
 };
+
+function DeleteDownload(id) {
+    document.getElementById(id).remove();
+    $.ajax({
+        url: '/Supports/DownloadModal/' + id,
+        data: $('form').serialize(),
+        type: 'POST',
+        success: function () { $('#close').click(); },
+        error: function (err) { alert("Error: " + err.responseText); }
+    });
+};
     
 function EditSupport(id) {
     if (!ValidateInputs())

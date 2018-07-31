@@ -11,23 +11,42 @@
 
 @foreach (var item in Model)
 {
-    <div class="accordion" id="accordion">
-        <div class="card">
-            <div data-toggle="collapse" data-target="@item.SupportId" aria-expanded="true" aria-controls="@item.SupportId" class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
-            <div id="@item.SupportId" class="collapse show card-body" aria-labelledby="headingOne" data-parent="#accordion">
-                @Html.DisplayFor(modelItem => item.Summary)
-
-                @if (item.FileDetails.Count() == 0)
-                {
-                    <span>No File</span>
-                }
-                else
-                {
-                    <span>@item.FileDetails.Count() File(s)</span>
-                }
-                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
-                |
-                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger adminActions" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
+    <div class="panel-group support" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 data-toggle="collapse" data-parent="#accordion" href="#@item.SupportId" class="panel-title">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </h4>
+            </div>
+            <div id="@item.SupportId" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <table class="table-responsive table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Meeting Summary</th>
+                                <th>Meeting File(s)</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Summary)
+                            </td>
+                            <td>
+                                @if (item.FileDetails.Count() == 0)
+                                {
+                                    <span>No File</span>
+                                }
+                                else
+                                {
+                                    <a data-target="#modalCreate" data-toggle="modal" onclick="RenderActions('/Supports/DownloadModal/@item.SupportId')">@item.FileDetails.Count() File(s)</a>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                    <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
+                    |
+                    <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger adminActions" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
+                </div>
             </div>
         </div>
     </div>

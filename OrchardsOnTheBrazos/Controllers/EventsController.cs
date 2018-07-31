@@ -47,7 +47,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventId,EventPost,EventPicture")] Event @event)
+        public ActionResult Create([Bind(Include = "EventId,EventName, EventPost,EventPicture")] Event @event)
         {
 
 
@@ -100,7 +100,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventId,EventPost,EventPicture")] Event @event, Guid? id)
+        public ActionResult Edit([Bind(Include = "EventId, EventName, EventPost,EventPicture")] Event @event, Guid? id)
         {
             var oldFile = @event.EventId;
             TempData["OldFile"] = oldFile;

@@ -84,6 +84,7 @@
           <Property Name="EventId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="EventPost" Type="nvarchar(max)" />
           <Property Name="EventPicture" Type="nvarchar(max)" />
+          <Property Name="EventName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="FileDetails">
           <Key>
@@ -99,8 +100,8 @@
             <PropertyRef Name="SupportId" />
           </Key>
           <Property Name="SupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Summary" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Summary" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -275,6 +276,7 @@
           <Property Name="EventId" Type="Guid" Nullable="false" />
           <Property Name="EventPost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EventPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -360,8 +362,8 @@
             <PropertyRef Name="SupportId" />
           </Key>
           <Property Name="SupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Summary" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FileDetails" Relationship="Model.FK_dbo_FileDetails_dbo_Supports_SupportId" FromRole="Support" ToRole="FileDetail" />
         </EntityType>
         <Association Name="FK_dbo_FileDetails_dbo_Supports_SupportId">
@@ -444,6 +446,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="Model.Event">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
                 <ScalarProperty Name="EventId" ColumnName="EventId" />
                 <ScalarProperty Name="EventPost" ColumnName="EventPost" />
                 <ScalarProperty Name="EventPicture" ColumnName="EventPicture" />

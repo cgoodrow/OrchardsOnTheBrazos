@@ -145,6 +145,20 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             return File(Path.Combine(Server.MapPath("~/App_Data/Upload/"), p), System.Net.Mime.MediaTypeNames.Application.Octet, d);
         }
+        [HttpGet]
+        public ActionResult DownloadModal(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Support support = db.Supports.Find(id);
+            if (support == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_Download", support);
+        }
 
         // GET: Supports/Delete/5
         public ActionResult Delete(int? id)

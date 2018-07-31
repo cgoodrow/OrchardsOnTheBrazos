@@ -9,18 +9,22 @@
         <div class="col-lg-12 no-gutters center-block">
             @foreach (var item in Model)
             {
-                <div class="col-lg-4 no-gutters">
-                    <div class="info-box">
-                        <p>
-                            @Html.DisplayFor(modelItem => item.EventPost)<br /><br />
-                            <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
-                            <span>|</span>
-                            <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
-                            <span>|</span>
-                            <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Events/Delete/@item.EventId')">Delete</button>
-                        </p>
-
-                        <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                <div class="col-lg-6 no-gutters">
+                    <div class="panel">
+                        <div class="panel-heading panel-primary">
+                           <h3 class="panel-title">@Html.DisplayFor(modelItem => item.EventName)</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                @Html.DisplayFor(modelItem => item.EventPost)<br /><br />
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
+                                <span>|</span>
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
+                                <span>|</span>
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Events/Delete/@item.EventId')">Delete</button>
+                            </p>
+                            <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                        </div>
                     </div>
                 </div>
             }
@@ -32,22 +36,7 @@
 @Html.Action("_Create");
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-
-            $('.info-box').hover(
-
-                function () {
-                    var target = $(this).find("p");
-                    $(target).show();
-                },
-
-                function () {
-                    $(".info-box > p").hide();
-                }
-            );
-        });
-    </script>
+    
     @if (TempData["Errormsg"] != null)
     {
         <script>

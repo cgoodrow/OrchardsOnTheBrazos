@@ -13,7 +13,7 @@ namespace OrchardsOnTheBrazos.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201807212348518_initialCreate"; }
+            get { return "201807310149259_initialCreate"; }
         }
         
         string IMigrationMetadata.Source
