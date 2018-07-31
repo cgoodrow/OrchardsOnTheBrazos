@@ -28,7 +28,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventId,EventName, EventPost,EventPicture")] Event @event)
+        public ActionResult Create([Bind(Include = "EventId,EventName, EventPost,EventPicture, EventDate")] Events @event)
         {
 
 
@@ -87,7 +87,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -100,7 +100,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventId, EventName, EventPost,EventPicture")] Event @event, Guid? id)
+        public ActionResult Edit([Bind(Include = "EventId, EventName, EventPost,EventPicture, EventDate")] Events @event, Guid? id)
         {
             var oldFile = @event.EventId;
             TempData["OldFile"] = oldFile;
@@ -147,7 +147,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -160,7 +160,7 @@ namespace OrchardsOnTheBrazos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             db.Events.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");
