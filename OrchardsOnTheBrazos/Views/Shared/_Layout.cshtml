@@ -15,6 +15,10 @@
             <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 no-gutters">
                 @Html.Partial("_Banner")
                 @RenderBody()
+                @if (User.IsInRole("Administrator"))
+                {
+                    @Html.Partial("_AdminAction")
+                }
                 @Html.Partial("_Error")
             </div>
         </div>

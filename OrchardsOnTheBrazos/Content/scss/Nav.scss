@@ -1,5 +1,8 @@
-﻿.navbar-collapse {
-    padding: 2px 2px;   
+﻿.navbar-inverse {
+    margin-bottom: 0;
+}
+.navbar-collapse {
+    padding: 2px 2px;
 
     @media (max-width: 767px) {
         margin: 0;
@@ -30,7 +33,7 @@
 
 .admin {
     position: absolute;
-    top: 265px;
+    top: 254px;
     right: 0;
     z-index: 150;
 }

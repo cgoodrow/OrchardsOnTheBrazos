@@ -18,7 +18,7 @@
                     <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
                 }
 
-                @if (User.IsInRole("Administrator"))
+                @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
                 {
                     <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
                 }
@@ -26,8 +26,5 @@
         </div>
     </div>
 </div>
-@if (User.IsInRole("Administrator"))
-{
-    @Html.Partial("_AdminAction")
-}
+
 

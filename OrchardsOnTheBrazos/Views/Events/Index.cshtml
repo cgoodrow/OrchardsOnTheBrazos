@@ -1,33 +1,43 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Events>
 
 <section class="events-home info">
-    <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
-    <div class="col-lg-12 center-block">
-        <h2 class="text-center">Events</h2>
+    @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+    {
+        <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
+    }
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="text-center">Events</h2>
+        </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 no-gutters center-block">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-6 no-gutters">
+        <div class="col-md-9 center-block">
+            <div class="slider">
+                @foreach (var item in Model)
+                {
                     <div class="panel">
-                        <div class="panel-heading panel-primary">
-                           <h3 class="panel-title">@Html.DisplayFor(modelItem => item.EventName)</h3>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Html.DisplayFor(modelItem => item.EventName)</h3>
                         </div>
                         <div class="panel-body">
                             <p>
-                                @Html.DisplayFor(modelItem => item.EventPost)<br /><br />
-                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
-                                <span>|</span>
-                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
-                                <span>|</span>
-                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Events/Delete/@item.EventId')">Delete</button>
+                                @Html.DisplayFor(modelItem => item.EventPost)<br />
                             </p>
+
                             <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                            @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+                            {
+
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
+                                <span class="adminActions">|</span>
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
+                                <span class="adminActions">|</span>
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Events/Delete/@item.EventId')">Delete</button>
+                            }
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </section>
@@ -36,7 +46,7 @@
 @Html.Action("_Create");
 
 @section Scripts {
-    
+
     @if (TempData["Errormsg"] != null)
     {
         <script>
@@ -48,4 +58,14 @@
             });
         </script>
     }
+
+    <script>
+        $('.slider').slick({
+            dots: false,
+            infinite: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear'
+        });
+    </script>
 }

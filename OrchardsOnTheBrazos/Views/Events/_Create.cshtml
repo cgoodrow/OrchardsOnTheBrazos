@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit Event</h4>
+                <h4 class="modal-title">Create Event</h4>
             </div>
             @using (Html.BeginForm("Create", "Events", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.EventPost, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.EventPost, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextAreaFor(model => model.EventPost, new { @class = "form-control text-area" })
                                 @Html.ValidationMessageFor(model => model.EventPost, "", new { @class = "text-danger" })
                             </div>
                         </div>
