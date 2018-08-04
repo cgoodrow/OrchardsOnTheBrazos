@@ -305,6 +305,7 @@
     <Content Include="Content\scss\Layout.scss" />
     <Content Include="Content\bootstrap-toggle.less" />
     <Content Include="Content\scss\Support.scss" />
+    <Content Include="Content\scss\Login.scss" />
     <None Include="Content\Site.scss" />
     <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap.js" />

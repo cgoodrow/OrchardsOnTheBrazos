@@ -2,12 +2,16 @@
 
 
 .events-home {
+    position: relative;
+
+    h2 {
+        width: 278px;
+        margin: 11px auto;
+    }
 
     img {
         display: block;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+        margin: 0 auto;
     }
 
     .info-box {

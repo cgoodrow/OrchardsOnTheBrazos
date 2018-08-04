@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Events>
 
-<section class="events-home info">
+<section class="events-home">
     @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
     {
         <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
     }
     <div class="row">
-        <div class="col-md-10">
-            <h2 class="text-center">Events</h2>
+        <div class="col-md-12">
+            <h2 class="text-center">Community Events</h2>
         </div>
     </div>
     <div class="row">
@@ -27,7 +27,6 @@
                             <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
                             @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
                             {
-
                                 <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
                                 <span class="adminActions">|</span>
                                 <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
@@ -64,8 +63,6 @@
             dots: false,
             infinite: true,
             speed: 500,
-            fade: true,
-            cssEase: 'linear'
         });
     </script>
 }
