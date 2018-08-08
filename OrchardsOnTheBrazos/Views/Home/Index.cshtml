@@ -3,16 +3,19 @@
 }
 
 <section class="info community">
-    @Html.ActionLink("Create New", "Create", "Events", null, new { @class = "create adminActions" })
+    <a class="create adminActions btn btn-warning" data-toggle="modal" data-target="#createModal">
+        Create
+    </a>
     <div class="row">
         <div class="col-lg-12 no-gutters center-block">
             @if (User.Identity.IsAuthenticated)
             {
                 @Html.Action("_Announcements", "Announcements")
+                @Html.Action("_Create", "Announcements")
             }
             else
             {
-                <div class="info-box">
+               <div class="info-box non-user">
                     <h2 class="text-center">Orchard on the Brazos welcomes you!</h2>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
                     <img src="@Url.Content("/Content/Images/Home/walnuts.png")" class="img-responsive" />
@@ -21,3 +24,4 @@
         </div>
     </div>
 </section>
+@Html.Partial("_CreateModal")

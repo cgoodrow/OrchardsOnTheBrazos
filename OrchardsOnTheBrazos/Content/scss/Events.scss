@@ -1,18 +1,22 @@
 ﻿@import 'Typography.scss';
 
 
-.events-home {   
+.events-home {
+    position: relative;
+
+    h2 {
+        width: 278px;
+        margin: 11px auto;
+    }
 
     img {
         display: block;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+        margin: 0 auto;
     }
 
     .info-box {
         position: relative;
-       
+
         p {
             position: absolute;
             display: none;
@@ -30,9 +34,35 @@
             a, span {
                 text-shadow: none;
                 font-weight: normal;
-
-                
             }
-        }       
+        }
+    }
+
+    .panel {
+        .panel-heading {
+            background-color: #d1a017;
+            border-color: #111;
+
+            .panel-title {
+                color: #000;
+            }
+        }
+
+        .panel-body {
+            border: solid 1px #d1a017;
+            img {
+                max-width: 100%;
+                max-height: 300px;
+            }
+        }
+    }
+
+    .slick-slider {
+        float: left;
+        width: 100%;
+
+        .slick-dots {
+            bottom: 0;
+        }
     }
 }

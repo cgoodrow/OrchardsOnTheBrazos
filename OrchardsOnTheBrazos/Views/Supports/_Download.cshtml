@@ -1,0 +1,23 @@
+﻿
+@model OrchardsOnTheBrazos.Models.Support
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Download</h4>
+</div>
+<div class="modal-body">
+      <div class="col-md-12">
+        <ul class="list-group">
+            @foreach (var item in Model.FileDetails)
+            {
+                <li class="list-group-item">
+                    <a class="title" href="/Supports/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                </li>
+            }
+        </ul>
+            <div class="form-actions no-color">
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+    </div>
+</div>

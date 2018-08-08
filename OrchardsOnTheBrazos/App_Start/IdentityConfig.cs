@@ -22,20 +22,32 @@ namespace OrchardsOnTheBrazos
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            await configSendGridasync(message);
+            await ConfigSendGridasync(message);
         }
 
         // Use NuGet to install SendGrid (Basic C# client lib) 
-        private async Task configSendGridasync(IdentityMessage message)
+        private async Task ConfigSendGridasync(IdentityMessage message)
         {
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress("jaynegoodrow2014@gmail.com", "New User Added");
             myMessage.From = new System.Net.Mail.MailAddress(
-                                "goodrow.chris4@gmail.com", "Orchard On The Brazos.");
+                                "jaynegoodrow2014@gmail.com", "Orchard On The Brazos.");
             myMessage.Subject = message.Subject;
             myMessage.Text = message.Body;
             myMessage.Html = message.Body;
 
+            var confirmMessage = new SendGridMessage();
+            confirmMessage.AddTo("jaynegoodrow2014@gmail.com");
+            confirmMessage.From = new System.Net.Mail.MailAddress("goodrow.chris4@gmail.com");
+            confirmMessage.Subject = "New User Added Alert";
+            var body = "<table style='width: 100%; padding: 5px;'><table style='width: 100%; border: solid 1px #d4d4d4; width: 80%; margin: 0 auto;'>" +
+                "<th style='background-color: #d1a017; border-bottom: 1px solid #000; padding: 15px;'>Orchards on The Brazos POA</th>" +
+                "<tr><td style='padding: 2px'>This is a new registered user from Orchards on The Brazos</td></tr>" +
+                "<tr><td style='padding: 2px'>{0}</td></tr> " +
+                "<tr><td style='padding: 2px'></td></td></table></table>";
+
+            confirmMessage.Html = string.Format(body, message.Destination);
             var credentials = new NetworkCredential(
                        ConfigurationManager.AppSettings["mailAccount"],
                        ConfigurationManager.AppSettings["mailPassword"]
@@ -48,6 +60,7 @@ namespace OrchardsOnTheBrazos
             if (transportWeb != null)
             {
                 await transportWeb.DeliverAsync(myMessage);
+                await transportWeb.DeliverAsync(confirmMessage);
             }
             else
             {

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Support>
+
+<section class="row info supports">
+    <button type="button" class="create btn btn-warning adminActions" data-toggle="modal" data-target="#createModal">
+        Create
+    </button>
+    <div class="col-md-12 center-block">
+        <h2 class="text-center">Meeting Documents</h2>
+    </div>
+</section>
+
+@foreach (var item in Model)
+{
+    <div class="panel-group support" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 data-toggle="collapse" data-parent="#accordion" href="#@item.SupportId" class="panel-title">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </h4>
+            </div>
+            <div id="@item.SupportId" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <table class="table-responsive table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Meeting Summary</th>
+                                <th>Meeting File(s)</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Summary)
+                            </td>
+                            <td>
+                                @if (item.FileDetails.Count() == 0)
+                                {
+                                    <span>No File</span>
+                                }
+                                else
+                                {
+                                    <a data-target="#modalCreate" data-toggle="modal" onclick="RenderActions('/Supports/DownloadModal/@item.SupportId')">@item.FileDetails.Count() File(s)</a>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                    <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
+                    |
+                    <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger adminActions" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial("_CreateModal")
+@Html.Action("_CreateDocumentModal", "Supports")

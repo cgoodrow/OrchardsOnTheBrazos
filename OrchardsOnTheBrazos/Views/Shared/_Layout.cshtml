@@ -15,6 +15,11 @@
             <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 no-gutters">
                 @Html.Partial("_Banner")
                 @RenderBody()
+                @if (User.IsInRole("Administrator"))
+                {
+                    @Html.Partial("_AdminAction")
+                }
+                @Html.Partial("_Error")
             </div>
         </div>
         <footer>
@@ -27,6 +32,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/Editor.js")
+    @Scripts.Render("~/Scripts/main.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

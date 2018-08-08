@@ -1,0 +1,47 @@
+﻿@model OrchardsOnTheBrazos.Models.Announcements
+
+<div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Edit Announcement</h4>
+</div>
+@using (Html.BeginForm("Edit", "Announcements", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Date, new { htmlAttributes = new { @class = "control-label" }})
+                        @Html.EditorFor(model => model.Date, "{0:yyyy-MM-dd}", "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", type = "date" }})
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Announcement, new { @class = "control-label " })
+                        @Html.TextAreaFor(model => model.Announcement, htmlAttributes: new { @class = "form-control text-area" })
+                        @Html.ValidationMessageFor(model => model.Announcement, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Save" class="btn btn-default btn-primary" /> | @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}

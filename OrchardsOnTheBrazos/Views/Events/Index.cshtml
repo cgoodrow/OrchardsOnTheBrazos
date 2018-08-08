@@ -1,49 +1,68 @@
-﻿@model IEnumerable<OrchardsOnTheBrazos.Event>
+﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Events>
 
-<section class="events-home info">
-    @Html.ActionLink("Create New", "Create", "Events", null, new { @class = "create adminActions" })
-    <div class="col-lg-12 center-block">
-        <h2 class="text-center">Events</h2>
+<section class="events-home">
+    @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+    {
+        <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#eventCreate">Create</button>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Community Events</h2>
+        </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 no-gutters center-block">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-4 no-gutters">
-                    <div class="info-box">
-                        <p>
-                            @Html.DisplayFor(modelItem => item.EventPost)<br /><br />
-                            @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
-                            {
-                                @Html.ActionLink("Edit", "Edit", new { id = item.EventId, }, new { @class = "adminActions" })<span>|</span>
-                                @Html.ActionLink("Details", "Details", new { id = item.EventId }, new { @class = "adminActions" })<span>|</span>
-                                @Html.ActionLink("Delete", "Delete", new { id = item.EventId, }, new { @class = "adminActions" })
-                            }
-                        </p>
+        <div class="col-md-9 center-block">
+            <div class="slider">
+                @foreach (var item in Model)
+                {
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Html.DisplayFor(modelItem => item.EventName)</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                @Html.DisplayFor(modelItem => item.EventPost)<br />
+                            </p>
 
-                        <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                            <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                            @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+                            {
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>
+                                <span class="adminActions">|</span>
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Events/Details/@item.EventId')">Details</button>
+                                <span class="adminActions">|</span>
+                                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Events/Delete/@item.EventId')">Delete</button>
+                            }
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </section>
 
+@Html.Partial("_CreateModal")
+@Html.Action("_Create");
+
 @section Scripts {
+
+    @if (TempData["Errormsg"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                console.log("success");
+                $('#errorModal').modal(function () {
+                    this.show();
+                });
+            });
+        </script>
+    }
+
     <script>
-        $(document).ready(function () {
-
-            $('.info-box').hover(
-
-                function () {
-                    var target = $(this).find("p");
-                    $(target).show();
-                },
-
-                function () {
-                    $(".info-box > p").hide();
-                }
-            );
+        $('.slider').slick({
+            dots: false,
+            infinite: true,
+            speed: 500,
         });
     </script>
 }

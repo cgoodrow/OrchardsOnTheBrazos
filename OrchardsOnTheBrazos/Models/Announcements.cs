@@ -10,7 +10,8 @@ namespace OrchardsOnTheBrazos.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        //[DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public string Announcement { get; set; }
     }

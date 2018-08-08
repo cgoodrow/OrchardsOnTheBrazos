@@ -28,26 +28,26 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return PartialView("_Details", @event);
         }
 
         // GET: Events/Create
-        public ActionResult Create()
+        public ActionResult _Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Events/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you waFnt to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventId,EventPost,EventPicture")] Event @event)
+        public ActionResult Create([Bind(Include = "EventId,EventName, EventPost,EventPicture, EventDate")] Events @event)
         {
 
 
@@ -87,12 +87,12 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return PartialView("_Edit", @event);
         }
 
         // POST: Events/Edit/5
@@ -100,7 +100,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventId,EventPost,EventPicture")] Event @event, Guid? id)
+        public ActionResult Edit([Bind(Include = "EventId, EventName, EventPost,EventPicture, EventDate")] Events @event, Guid? id)
         {
             var oldFile = @event.EventId;
             TempData["OldFile"] = oldFile;
@@ -113,7 +113,7 @@ namespace OrchardsOnTheBrazos.Controllers
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
                     {
                         TempData["Errormsg"] = "Image File Extension is Not valid";
-                        return View();
+                        return RedirectToAction("Index", "Events");
                     }
                     else
                     {
@@ -147,12 +147,12 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return PartialView("_Delete", @event);
         }
 
         // POST: Events/Delete/5
@@ -160,7 +160,7 @@ namespace OrchardsOnTheBrazos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Event @event = db.Events.Find(id);
+            Events @event = db.Events.Find(id);
             db.Events.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -11,14 +11,14 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Documentation", "Index", "Documents")</li>
+                    <li>@Html.ActionLink("Documentation", "Index", "Supports")</li>
                     <li>@Html.ActionLink("Events", "Index", "Events")</li>
                     <li>@Html.ActionLink("Helpful Info", "Index", "Info")</li>
                     <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home")</li>
                     <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
                 }
 
-                @if (User.IsInRole("Administrator"))
+                @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
                 {
                     <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
                 }
@@ -26,8 +26,5 @@
         </div>
     </div>
 </div>
-@if (User.IsInRole("Administrator"))
-{
-    @Html.Partial("_AdminAction")
-}
+
 

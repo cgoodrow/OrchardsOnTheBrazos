@@ -9,6 +9,16 @@
             max-height: none;
             z-index: 5;
 
+            &.non-user {
+                h2 {
+                    width: 538px;
+
+                    @media (max-width: 600px) {
+                        width: 100%;
+                    }
+                }
+            }
+
             h5 {
                 &:after {
                     bottom: auto !important;
@@ -22,7 +32,6 @@
             }
 
             p {
-                padding: 15px;
                 z-index: 10;
             }
 
@@ -37,6 +46,19 @@
                 object-fit: cover;
                 object-position: 0px;
             }
+        }
+    }
+
+    .panel {
+        height: 450px;
+        overflow-y: scroll;
+        border: inset 2px rgba(0,0,0,.1);
+
+        .panel-heading {
+            background-color: #d1a017;
+            border-color: #111;
+            color: #fff;
+            font-weight: bold;
         }
     }
 }

@@ -35,6 +35,11 @@ namespace OrchardsOnTheBrazos.Models
 
         public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Announcements> Announcements { get; set; }
 
-        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Event> Events { get; set; }
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Events> Events { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.FileDetail> FileDetail { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Support> Supports { get; set; }
+
     }
 }

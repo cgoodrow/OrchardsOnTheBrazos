@@ -37,13 +37,13 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(announcements);
+            return PartialView("_Details",announcements);
         }
 
         // GET: Announcements/Create
-        public ActionResult Create()
+        public ActionResult _Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Announcements/Create
@@ -75,7 +75,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(announcements);
+            return PartialView("_Edit", announcements);
         }
 
         // POST: Announcements/Edit/5
@@ -89,7 +89,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 db.Entry(announcements).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(announcements);
         }
@@ -106,7 +106,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return HttpNotFound();
             }
-            return View(announcements);
+            return PartialView("_Delete",announcements);
         }
 
         // POST: Announcements/Delete/5
@@ -117,7 +117,7 @@ namespace OrchardsOnTheBrazos.Controllers
             Announcements announcements = db.Announcements.Find(id);
             db.Announcements.Remove(announcements);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

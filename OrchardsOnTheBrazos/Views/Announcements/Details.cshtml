@@ -3,40 +3,40 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Announcements</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Announcement)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Announcement)
-        </dd>
-
-    </dl>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Details</h4>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+<div class="modal-body">
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Announcement)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Announcement)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="modal-footer">
+    <a data-toggle="modal" data-target="#createModal" class="btn btn-primary btn-sm" onclick="RenderActions('/Announcements/Edit/' + @Model.Id)">Edit</a> |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

@@ -11,8 +11,9 @@ using Microsoft.Owin.Security;
 using OrchardsOnTheBrazos.Models;
 using System.Configuration;
 using Microsoft.AspNet.Identity.EntityFramework;
-
-
+using SendGrid;
+using System.Net.Mail;
+using System.Net;
 
 namespace OrchardsOnTheBrazos.Controllers
 {
@@ -106,7 +107,7 @@ namespace OrchardsOnTheBrazos.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -176,7 +177,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
-
+               
                 if (result.Succeeded)
                 {
                     db.SaveChanges();
@@ -186,9 +187,10 @@ namespace OrchardsOnTheBrazos.Controllers
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                                    + "before you can log in. If email not received within several minutes check your spam";
+                                  + "before you can log in. If email not received within several minutes check your spam";
 
                     return View("Info");
+                              
                     //return RedirectToAction("Index", "Home");                    
                 }
                 AddErrors(result);
@@ -197,7 +199,6 @@ namespace OrchardsOnTheBrazos.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -238,7 +239,7 @@ namespace OrchardsOnTheBrazos.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -340,7 +341,7 @@ namespace OrchardsOnTheBrazos.Controllers
             {
                 return View("Error");
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -512,7 +513,7 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
-               new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+               new { userId = userID, code }, protocol: Request.Url.Scheme);
             await UserManager.SendEmailAsync(userID, subject,
                "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 

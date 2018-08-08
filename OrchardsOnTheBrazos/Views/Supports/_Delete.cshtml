@@ -1,0 +1,43 @@
+﻿@model OrchardsOnTheBrazos.Models.Support
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Delete</h4>
+</div>
+<div class="modal-body">
+    <div class="col-md-12">
+        <h3>Are you sure you want to delete this?</h3>
+        <strong>
+            @Html.DisplayNameFor(model => model.Name)
+        </strong><span>:</span>
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div class="col-md-12">
+        <strong>
+            @Html.DisplayNameFor(model => model.Summary)
+        </strong><span>:</span>
+        @Html.DisplayFor(model => model.Summary)
+    </div>
+    <div class="col-md-12">
+        <ul class="list-group">
+            @foreach (var item in Model.FileDetails)
+            {
+                <li class="list-group-item">
+                    <a class="title" href="/Supports/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                </li>
+            }
+        </ul>
+
+
+        @using (Html.BeginForm("Delete", "Supports", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>
