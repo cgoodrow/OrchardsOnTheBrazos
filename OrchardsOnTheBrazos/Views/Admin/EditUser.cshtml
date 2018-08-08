@@ -17,7 +17,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.UserName,
                          htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-5">
                         @Html.DisplayFor(model => model.UserName,
                              new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.UserName, "",
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Email,
                          htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-5">
                         @Html.EditorFor(model => model.Email,
                              new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Email,
@@ -40,9 +40,8 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Password,
                          htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(model => model.Password,
-                             new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-5">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Password,
                              "",
                              new { @class = "text-danger" })
@@ -52,7 +51,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.LockoutEndDateUtc,
                          htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-5">
                         @Html.DisplayFor(model => model.LockoutEndDateUtc,
                              new { htmlAttributes = new { @class = "form-control" } })
                     </div>
