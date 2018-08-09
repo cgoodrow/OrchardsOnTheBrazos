@@ -60,7 +60,7 @@ namespace OrchardsOnTheBrazos.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(announcements);
+            return RedirectToAction("Index", "Home", announcements);
         }
 
         // GET: Announcements/Edit/5

@@ -5,6 +5,11 @@
 .navbar-inverse {
     margin-bottom: 0;
 }
+
+.navbar {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
 .navbar-collapse {
     padding: 2px 2px;
 
@@ -40,4 +45,11 @@
     top: 254px;
     right: 0;
     z-index: 150;
+}
+
+.disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
 }

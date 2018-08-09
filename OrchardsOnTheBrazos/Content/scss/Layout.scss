@@ -26,17 +26,6 @@
             font-size: 1.6em;
             font-family: $robot-slab;
             font-weight: bold;
-
-            &:after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 25px;
-                width: 217px;
-                padding: 0 50px;
-                height: 2px;
-                border-bottom: solid 1px $orange;
-            }
         }
 
         p {

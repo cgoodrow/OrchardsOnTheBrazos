@@ -13,9 +13,9 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Documentation", "Index", "Supports")</li>
                     <li>@Html.ActionLink("Events", "Index", "Events")</li>
-                    <li>@Html.ActionLink("Helpful Info", "Index", "Info")</li>
-                    <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home")</li>
-                    <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
+                    <li>@Html.ActionLink("Helpful Info", "Index", "Info", new { @class = "disabled" })</li>
+                    <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home", new { @class = "disabled" })</li>
+                    <li>@Html.ActionLink("Directory", "Directory", "Home", new { @class = "disabled" })</li>
                 }
 
                 @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
