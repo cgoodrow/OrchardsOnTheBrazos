@@ -219,9 +219,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807312237090_initialCreate.cs" />
-    <Compile Include="Migrations\201807312237090_initialCreate.Designer.cs">
-      <DependentUpon>201807312237090_initialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201808090140498_initialCreate.cs" />
+    <Compile Include="Migrations\201808090140498_initialCreate.Designer.cs">
+      <DependentUpon>201808090140498_initialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,6 +322,8 @@
     <Content Include="Content\Slick\slick.scss" />
     <None Include="Properties\PublishProfiles\OrchardsOnTheBrazos20180616111740 - Web Deploy.pubxml" />
     <Content Include="Scripts\Editor.js" />
+    <None Include="Properties\PublishProfiles\orchardsonthebrazospoa.com - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\orchardsonthebrazospoa.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -431,8 +433,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807312237090_initialCreate.resx">
-      <DependentUpon>201807312237090_initialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808090140498_initialCreate.resx">
+      <DependentUpon>201808090140498_initialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

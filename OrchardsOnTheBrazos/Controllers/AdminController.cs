@@ -56,7 +56,7 @@ namespace OrchardsOnTheBrazos.Controllers
                 intTotalPageCount = UserManager.Users
                     .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
                     .Count();
-                    //.Where(x => x.LastName.Contains(searchStringUserNameOrEmail)).Count();
+                //.Where(x => x.LastName.Contains(searchStringUserNameOrEmail)).Count();
 
                 var result = UserManager.Users
                     .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
