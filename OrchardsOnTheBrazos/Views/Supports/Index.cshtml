@@ -5,6 +5,7 @@
         Create
     </button>
     <div class="col-md-12 center-block">
+        <p>@ViewBag.Message</p>
         <h2 class="text-center">Meeting Documents</h2>
     </div>
 </section>
@@ -44,7 +45,7 @@
                         </tr>
                     </table>
                     <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Supports/Edit/' + @item.SupportId)">Edit</button>
-                    |
+                    <span class="adminActions">|</span>
                     <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-sm btn-primary btn-danger adminActions" onclick="RenderActions('/Supports/Delete/' + @item.SupportId)">Delete</button>
                 </div>
             </div>

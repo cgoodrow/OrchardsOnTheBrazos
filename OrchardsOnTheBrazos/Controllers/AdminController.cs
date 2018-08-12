@@ -21,6 +21,7 @@ namespace OrchardsOnTheBrazos.Controllers
 
         // GET: /Admin/
         [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Board Member")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
         public ActionResult Index(string searchStringUserNameOrEmail, string currentFilter, int? page, RegisterViewModel model)
         {
@@ -102,7 +103,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // Users *****************************
 
         // GET: /Admin/Edit/Create 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Board Member")]
         #region public ActionResult Create()
         public ActionResult Create()
         {

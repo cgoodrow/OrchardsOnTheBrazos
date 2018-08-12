@@ -10,6 +10,7 @@
             z-index: 5;
 
             &.non-user {
+                padding: 35px;
                 h2 {
                     width: 538px;
 
@@ -33,7 +34,7 @@
                 position: absolute;
                 bottom: 0px;
                 right: 0;
-                max-width: 188px;
+                max-width: 288px;
                 height: 100%;
                 width: 100%;
                 z-index: -1;

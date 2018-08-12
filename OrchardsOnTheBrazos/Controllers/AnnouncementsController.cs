@@ -24,7 +24,7 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             return PartialView(db.Announcements.ToList());
         }
-
+        [Authorize(Roles = "Board Member")]
         // GET: Announcements/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,7 +39,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Details",announcements);
         }
-
+        [Authorize(Roles = "Board Member")]
         // GET: Announcements/Create
         public ActionResult _Create()
         {
@@ -62,7 +62,7 @@ namespace OrchardsOnTheBrazos.Controllers
 
             return RedirectToAction("Index", "Home", announcements);
         }
-
+        [Authorize(Roles = "Board Member")]
         // GET: Announcements/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,7 +93,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return View(announcements);
         }
-
+        [Authorize(Roles = "Board Member")]
         // GET: Announcements/Delete/5
         public ActionResult Delete(int? id)
         {

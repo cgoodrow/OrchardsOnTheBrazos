@@ -26,5 +26,5 @@
 </div>
 <div class="modal-footer">
     <a data-target="#createModal" class="btn btn-primary btn-sm" onclick="RenderActions('/Announcements/Edit/' + @Model.Id)">Edit</a> |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-default" })
 </div>

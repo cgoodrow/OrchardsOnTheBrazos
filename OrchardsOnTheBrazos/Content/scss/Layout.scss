@@ -57,3 +57,7 @@ body::-webkit-scrollbar-thumb {
     outline: 1px solid slategrey;
 }
 
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: $orange;
+    color: #fff;
+}

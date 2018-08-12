@@ -43,8 +43,12 @@
 .admin {
     position: absolute;
     top: 254px;
-    right: 0;
+    right: 1px;
     z-index: 150;
+
+    @media (max-width: 480px) {
+        top: 215px;
+    }
 }
 
 .disabled {

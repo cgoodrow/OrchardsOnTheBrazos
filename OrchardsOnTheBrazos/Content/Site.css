@@ -122,6 +122,9 @@ input, textarea {
   font-weight: 500;
   z-index: 100;
   cursor: pointer; }
+  @media (max-width: 480px) {
+    .create {
+      top: -35px; } }
 
 .row {
   margin-left: 0;
@@ -158,22 +161,24 @@ p {
   position: relative;
   max-height: none;
   z-index: 5; }
-  .info.community .info-box.non-user h2 {
-    width: 538px; }
-    @media (max-width: 600px) {
-      .info.community .info-box.non-user h2 {
-        width: 100%; } }
-  .info.community .info-box.non-user span {
-    color: #d1a017;
-    font-size: 16px;
-    font-weight: 100; }
+  .info.community .info-box.non-user {
+    padding: 35px; }
+    .info.community .info-box.non-user h2 {
+      width: 538px; }
+      @media (max-width: 600px) {
+        .info.community .info-box.non-user h2 {
+          width: 100%; } }
+    .info.community .info-box.non-user span {
+      color: #d1a017;
+      font-size: 16px;
+      font-weight: 100; }
   .info.community .info-box p {
     z-index: 10; }
   .info.community .info-box img {
     position: absolute;
     bottom: 0px;
     right: 0;
-    max-width: 188px;
+    max-width: 288px;
     height: 100%;
     width: 100%;
     z-index: -1;
@@ -224,8 +229,11 @@ p {
 .admin {
   position: absolute;
   top: 254px;
-  right: 0;
+  right: 1px;
   z-index: 150; }
+  @media (max-width: 480px) {
+    .admin {
+      top: 215px; } }
 
 .disabled {
   color: currentColor;
@@ -339,6 +347,10 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey; }
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+  background-color: #d1a017;
+  color: #fff; }
 
 .support .panel .panel-heading {
   background-color: #222; }
