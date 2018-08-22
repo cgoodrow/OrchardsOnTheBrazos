@@ -62,12 +62,6 @@ namespace OrchardsOnTheBrazos.Controllers
 
                     if (file != null && file.ContentLength > 0)
                     {
-                        int iFileSize = file.ContentLength;
-                        if (iFileSize > 1048576)
-                        {
-                            ViewBag.message = "File size is to large.";
-                            return View("Index");
-                        }
                         var fileName = Path.GetFileName(file.FileName);
                         FileDetail fileDetail = new FileDetail()
                         {
