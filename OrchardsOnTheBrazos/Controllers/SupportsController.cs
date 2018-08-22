@@ -184,14 +184,14 @@ namespace OrchardsOnTheBrazos.Controllers
 
             //delete files from the file system
 
-            //foreach (var item in support.FileDetails)
-            //{
-            //    String path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.Id + item.Extension);
-            //    if (System.IO.File.Exists(path))
-            //    {
-            //        System.IO.File.Delete(path);
-            //    }
-            //}
+            foreach (var item in support.FileDetails)
+            {
+                String path = Path.Combine(Server.MapPath("~/Content/Files/"), item.Id + item.Extension);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
             db.Supports.Remove(support);
             Json(db.SaveChanges());
             return RedirectToAction("Index");
