@@ -146,6 +146,12 @@ input, textarea {
   .modal-body h3 {
     margin: 0 0 5px 0; }
 
+.inline-block {
+  display: inline-block; }
+
+.adminActions {
+  display: none; }
+
 h1 {
   font-family: "Black Han Sans", sans-serif;
   color: #d1a017; }
@@ -397,6 +403,9 @@ body::-webkit-scrollbar-thumb {
 
 .ul-login {
   margin-bottom: 14px; }
+
+.register-form .form-group {
+  margin-right: 0px; }
 
 body {
   padding-top: 10px;

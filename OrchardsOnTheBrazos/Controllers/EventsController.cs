@@ -16,11 +16,12 @@ namespace OrchardsOnTheBrazos.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Events
+        [Authorize(Roles = "Resident")]
         public ActionResult Index()
         {
             return View(db.Events.ToList());
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Events/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -35,7 +36,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Details", @event);
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Events/Create
         public ActionResult _Create()
         {
@@ -79,7 +80,7 @@ namespace OrchardsOnTheBrazos.Controllers
 
             return View(@event);
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Events/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -140,7 +141,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return View(@event);
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Events/Delete/5
         public ActionResult Delete(Guid? id)
         {
@@ -155,7 +156,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Delete", @event);
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

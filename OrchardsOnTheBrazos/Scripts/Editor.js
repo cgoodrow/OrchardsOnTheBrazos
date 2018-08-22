@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(".adminActions").hide();
+    // $(".adminActions").hide();
     $(".info-box > p > span").hide();
 
     $("#toggleSwitch").change(function () {

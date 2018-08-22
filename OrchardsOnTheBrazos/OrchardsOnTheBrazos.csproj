@@ -307,6 +307,9 @@
     <Content Include="Content\bootstrap-toggle.less" />
     <Content Include="Content\scss\Support.scss" />
     <Content Include="Content\scss\Login.scss" />
+    <Content Include="Content\Files\0baf6ee0-bed2-4f42-90b2-ccbff57a490d.pdf" />
+    <Content Include="Content\Files\14c7f3c1-6bf2-49e1-8442-07779d3f88a1.docx" />
+    <Content Include="Content\Files\c9c24dec-0f15-40d4-ac00-e35949c8c0b6.pdf" />
     <None Include="Content\Site.scss" />
     <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -416,7 +419,6 @@
   <ItemGroup>
     <Folder Include="App_Data\Documents\" />
     <Folder Include="App_Data\Upload\" />
-    <Folder Include="Content\Files\" />
     <Folder Include="Content\Temp\" />
     <Folder Include="Content\Uploads\" />
   </ItemGroup>

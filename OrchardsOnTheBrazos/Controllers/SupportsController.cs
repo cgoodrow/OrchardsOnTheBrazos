@@ -14,7 +14,7 @@ namespace OrchardsOnTheBrazos.Controllers
     public class SupportsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Supports
         public ActionResult _CreateDocumentModal()
         {
@@ -24,7 +24,7 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             return View(db.Supports.ToList());
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Supports/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,7 +39,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return View(support);
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Supports/Create
         public ActionResult Create()
         {
@@ -62,6 +62,12 @@ namespace OrchardsOnTheBrazos.Controllers
 
                     if (file != null && file.ContentLength > 0)
                     {
+                        int iFileSize = file.ContentLength;
+                        if (iFileSize > 1048576)
+                        {
+                            ViewBag.message = "File size is to large.";
+                            return View("Index");
+                        }
                         var fileName = Path.GetFileName(file.FileName);
                         FileDetail fileDetail = new FileDetail()
                         {
@@ -70,13 +76,7 @@ namespace OrchardsOnTheBrazos.Controllers
                             Id = Guid.NewGuid()
                         };
                         fileDetails.Add(fileDetail);
-
-                        int iFileSize = file.ContentLength;
-                        if (iFileSize > 1048576)
-                        {
-                            ViewBag.message = "File size is to large.";
-                            return View("Index");
-                        }
+                        
                         var path = Path.Combine(Server.MapPath("~/Content/Files/"), fileDetail.Id + fileDetail.Extension);
                         file.SaveAs(path);
                     }
@@ -95,7 +95,7 @@ namespace OrchardsOnTheBrazos.Controllers
         //    return PartialView();
         //}
         // GET: Supports/Edit/5
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -165,7 +165,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Download", support);
         }
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         // GET: Supports/Delete/5
         public ActionResult Delete(int? id)
         {
