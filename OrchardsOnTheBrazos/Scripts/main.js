@@ -144,3 +144,52 @@ function DeleteEvent(id) {
         error: function (err) { alert("Error: " + err.responseText); }
     });
 };
+
+function DeleteInfo(id) {
+    document.getElementById(id).remove();
+    $.ajax({
+        url: '/Info/Delete/' + id,
+        data: $('form').serialize(),
+        type: 'POST',
+        success: function () { $('.close').click(); },
+        error: function (err) { alert("Error: " + err.responseText); }
+    });
+};
+
+function DetailsInfo(id) {
+    if (!ValidateInputs())
+        return;
+    $.ajax({
+        url: '/Info/Details/' + id,
+        type: 'POST',
+        data: $('form').serialize(),
+        success: function (res) {
+            var keys = ["Id", "Site", "Link"];
+            $('#' + res.Id + ' td').each(function (i) {
+                $(this).text(res[keys[i]]);
+            })
+            console.log("modal");
+            $(".close").click();
+        },
+        error: function (err) { alert("Error: " + err.responseText); }
+    })
+};
+
+function EditInfo(id) {
+    if (!ValidateInputs())
+        return;
+    $.ajax({
+        url: '/Info/Edit/' + id,
+        type: 'POST',
+        data: $('form').serialize(),
+        success: function (res) {
+            var keys = ["Id", "Site", "Link"];
+            $('#' + res.Id + ' td').each(function (i) {
+                $(this).text(res[keys[i]]);
+            })
+            console.log("modal");
+            $(".close").click();
+        },
+        error: function (err) { alert("Error: " + err.responseText); }
+    })
+};
