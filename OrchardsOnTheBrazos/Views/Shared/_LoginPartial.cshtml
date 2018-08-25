@@ -1,20 +1,22 @@
 ﻿@using Microsoft.AspNet.Identity
 <ul class="ul-login">
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class="" }))
+   
+
+    @if (Request.IsAuthenticated)
     {
-        @Html.AntiForgeryToken()    
-        <li>
-            <i class="fa fa-user"></i>
-            @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><i class="fa fa-sign-out"></i><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+            <li>
+                <i class="fa fa-user"></i>
+                @Html.ActionLink(User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", id="user" })
+            </li>
+            <li><i class="fa fa-sign-out"></i><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        }
     }
-}
-else
-{
-    <li><i class="fa fa-register"></i>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-    <li><i class="fa fa-sign-in"></i>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-}
-    </ul>
+    else
+    {
+        <li><i class="fa fa-registered"></i>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li><i class="fa fa-sign-in"></i>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    }
+</ul>

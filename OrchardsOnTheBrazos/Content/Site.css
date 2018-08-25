@@ -9,6 +9,11 @@ h2, h3, h4 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
+
 h1 {
   font-family: "Black Han Sans", sans-serif;
   color: #d1a017; }
@@ -19,6 +24,11 @@ h2, h3, h4 {
 
 p {
   font-family: "Titillium Web", sans-serif; }
+
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
 
 a {
   cursor: pointer; }
@@ -163,6 +173,11 @@ h2, h3, h4 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
+
 .info.community .info-box {
   position: relative;
   max-height: none;
@@ -258,6 +273,11 @@ h2, h3, h4 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
+
 .events-home {
   position: relative; }
   .events-home h2 {
@@ -310,6 +330,11 @@ h2, h3, h4 {
 
 p {
   font-family: "Titillium Web", sans-serif; }
+
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
 
 @media (max-width: 480px) {
   .nav {
@@ -406,6 +431,12 @@ body::-webkit-scrollbar-thumb {
 
 .register-form .form-group {
   margin-right: 0px; }
+
+.info li .fa-info-circle {
+  color: #000 !important; }
+
+.info li a {
+  color: #000; }
 
 body {
   padding-top: 10px;

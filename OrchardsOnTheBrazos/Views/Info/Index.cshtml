@@ -4,7 +4,7 @@
     ViewBag.Title = "Community Resources";
 }
 
-<section class="events-home">
+<section class="events-home info">
     @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
     {
         <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#infoCreate">Create</button>

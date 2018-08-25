@@ -10,6 +10,8 @@ using OrchardsOnTheBrazos.Models;
 
 namespace OrchardsOnTheBrazos.Controllers
 {
+    [Authorize(Roles = "Resident")]
+
     public class InfoController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
