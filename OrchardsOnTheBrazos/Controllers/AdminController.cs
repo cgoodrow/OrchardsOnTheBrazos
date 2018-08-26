@@ -20,8 +20,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // Controllers
 
         // GET: /Admin/
-        [Authorize(Roles = "Administrator")]
-        [Authorize(Roles = "Board Member")]
+        [Authorize(Roles = "Resident")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
         public ActionResult Index(string searchStringUserNameOrEmail, string currentFilter, int? page, RegisterViewModel model)
         {

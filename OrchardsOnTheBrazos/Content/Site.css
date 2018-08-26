@@ -162,6 +162,15 @@ input, textarea {
 .adminActions {
   display: none; }
 
+.panel-heading {
+  background-color: #d1a017 !important;
+  color: #000 !important;
+  font-family: "Titillium Web", sans-serif; }
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #d1a017;
+  border-color: #d1a017; }
+
 h1 {
   font-family: "Black Han Sans", sans-serif;
   color: #d1a017; }

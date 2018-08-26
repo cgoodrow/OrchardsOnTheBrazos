@@ -210,6 +210,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Directory.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -422,7 +423,7 @@
     <Content Include="Views\Info\_Delete.cshtml" />
     <Content Include="Views\Info\_Details.cshtml" />
     <Content Include="Views\Info\_Edit.cshtml" />
-    <Content Include="Views\Account\AccountInfo.cshtml" />
+    <Content Include="Views\Directory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Documents\" />

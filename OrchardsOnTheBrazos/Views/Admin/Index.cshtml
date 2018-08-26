@@ -6,24 +6,34 @@
 @{
     ViewBag.Title = "Admin";
 }
-
-<div class="row m-top-25">
+<div class="row">
     <div class="col-md-12">
-        <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-warning" })
-            @Html.ActionLink("Edit Roles", "ViewAllRoles", null, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Back to Home", "../", "Home", null, new { @class = "btn btn-default" })
-        </p>
-        <br />
-        @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+        <h2 class="text-center" style="width: 145px;">Residents</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
         {
-
-            <div class="form-group">
-                Search:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
-
-                <input type="submit" value="Search" />
-            </div>
+            <p>
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Edit Roles", "ViewAllRoles", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Back to Home", "../", "Home", null, new { @class = "btn btn-default" })
+            </p>
         }
+        <br />
+        <div class="row">
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+            {
+                <div class="form-group col-md-12" style="margin: 0, 0 15px, 0; padding-left: 0">
+                    <div class="col-md-8 col-lg-5">
+                        @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string, new { @class = "form-control", style = "width: 280px; float: left" })
+
+                        <input class="btn btn-primary" type="submit" value="Search" />
+                    </div>
+                </div>
+            }
+        </div>
         <br />
         <div class="table-responsive">
             <table class="table table-small table-hover table-striped">
@@ -37,12 +47,16 @@
                     <th scope="col">
                         Email
                     </th>
-                    <th scope="col">
-                        Locked Out
-                    </th>
-                    <th scope="col">
-                        Admin Actions
-                    </th>
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+                    {
+                        <th scope="col">
+                            Locked Out
+                        </th>
+
+                        <th scope="col">
+                            Admin Actions
+                        </th>
+                    }
                 </tr>
 
                 @foreach (var item in Model)
@@ -55,17 +69,21 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
-                            @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
-                            {
-                                @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
-                                                                             new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
-                            }
-                        </td>
+                        @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
+                                @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                                {
+                                    @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                                                                                                      new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                                }
+                            </td>
+                        }
                     </tr>
                 }
 
@@ -76,13 +94,13 @@
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
         @Html.PagedListPager(Model,
-                                             page => Url.Action("Index",
-                                             new
-                                             {
-                                                 page,
-                                                 searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
-                                                 currentFilter = ViewBag.CurrentFilter
-                                             }))
+                                                                      page => Url.Action("Index",
+                                                                      new
+                                                                      {
+                                                                          page,
+                                                                          searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
+                                                                          currentFilter = ViewBag.CurrentFilter
+                                                                      }))
         <hr />
     </div>
 </div>

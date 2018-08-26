@@ -1,0 +1,63 @@
+﻿@model PagedList.IPagedList<OrchardsOnTheBrazos.Models.ExpandedUserDTO>
+@using PagedList.Mvc;
+
+
+
+@{
+    ViewBag.Title = "Directory";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center" style="width: 259px;">Member Directory</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            @using (Html.BeginForm("Index", "Directory", FormMethod.Get))
+            {
+                <div class="form-group col-md-12" style="margin: 0, 0 15px, 0; padding-left: 0">
+                    <div class="col-md-8 col-lg-5">
+                        @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string, new { @class = "form-control", style = "width: 280px; float: left; border-right: 0;" })
+
+                        <input class="btn btn-default" type="submit" value="Search"/>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row m-top-25">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </div>
+                        <div class="panel-body">
+                            <address>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model,
+                                       page => Url.Action("Index",
+                                       new
+                                       {
+                                           page,
+searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
+                                           currentFilter = ViewBag.CurrentFilter
+                                       }))
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
+

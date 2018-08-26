@@ -168,3 +168,13 @@ input, textarea {
     display: none;
 }
 
+.panel-heading {
+    background-color: $orange !important;
+    color: #000 !important;
+    font-family: $titillium;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: $orange;
+    border-color: $orange;
+}
