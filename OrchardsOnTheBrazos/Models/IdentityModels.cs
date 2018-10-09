@@ -43,5 +43,9 @@ namespace OrchardsOnTheBrazos.Models
         public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Support> Supports { get; set; }
 
         public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Info> Infoes { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Directory> Directories { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.DirectoryDetail> DirectoryDetails { get; set; }
     }
 }

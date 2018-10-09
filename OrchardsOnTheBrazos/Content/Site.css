@@ -316,6 +316,9 @@ p {
   .events-home .panel .panel-heading {
     background-color: #d1a017;
     border-color: #111; }
+    .events-home .panel .panel-heading .fa {
+      color: #000 !important;
+      float: left; }
     .events-home .panel .panel-heading .panel-title {
       color: #000; }
   .events-home .panel .panel-body {
@@ -359,7 +362,7 @@ p {
     border-radius: 5px;
     box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
     padding: 7px;
-    margin: 5px;
+    margin: 5px 0px;
     max-width: 100%;
     font-family: "Roboto Slab", serif; }
     .info .info-box h5 {
@@ -394,6 +397,9 @@ body::-webkit-scrollbar-thumb {
 
 .support .panel .panel-heading {
   background-color: #222; }
+  .support .panel .panel-heading .fa {
+    color: #000 !important;
+    float: left; }
   .support .panel .panel-heading .panel-title {
     font-weight: 700;
     cursor: pointer; }
@@ -447,6 +453,9 @@ body::-webkit-scrollbar-thumb {
 .info li a {
   color: #000; }
 
+.directory h2 {
+  width: 134px; }
+
 body {
   padding-top: 10px;
   background-color: #eee; }
@@ -467,4 +476,3 @@ input,
 select,
 textarea {
   max-width: 280px; }
-

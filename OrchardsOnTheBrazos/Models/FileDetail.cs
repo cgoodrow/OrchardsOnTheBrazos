@@ -14,4 +14,14 @@ namespace OrchardsOnTheBrazos.Models
         public virtual Support Support { get; set; }
 
     }
+
+    public class DirectoryDetail
+    {
+        public Guid Id { get; set; }
+        public string FileName { get; set; }
+        public string Extension { get; set; }
+        public int DirectoryId { get; set; }
+        public virtual Directory Directory { get; set; }
+
+    }
 }
