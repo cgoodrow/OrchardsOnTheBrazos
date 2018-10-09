@@ -3,6 +3,11 @@
         .panel-heading {
             background-color: #222;
 
+            .fa {
+                color: #000 !important;
+                float: left;
+            }
+
             .panel-title {
                 font-weight: 700;
                 cursor: pointer;

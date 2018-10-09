@@ -323,6 +323,7 @@
     <Content Include="Content\Files\14c7f3c1-6bf2-49e1-8442-07779d3f88a1.docx" />
     <Content Include="Content\Files\c9c24dec-0f15-40d4-ac00-e35949c8c0b6.pdf" />
     <Content Include="Content\scss\Info.scss" />
+    <Content Include="Content\scss\Directory.scss" />
     <None Include="Content\Site.scss" />
     <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -428,12 +429,9 @@
     <Content Include="Views\Info\_Delete.cshtml" />
     <Content Include="Views\Info\_Details.cshtml" />
     <Content Include="Views\Info\_Edit.cshtml" />
-    <Content Include="Views\Directory\Create.cshtml" />
-    <Content Include="Views\Directory\Delete.cshtml" />
-    <Content Include="Views\Directory\Details.cshtml" />
-    <Content Include="Views\Directory\Edit.cshtml" />
     <Content Include="Views\Directory\Index.cshtml" />
-    <Content Include="Views\Directory\DirectoryDetails.cshtml" />
+    <Content Include="Views\Directory\_Create.cshtml" />
+    <Content Include="Views\Directory\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Documents\" />
