@@ -17,7 +17,7 @@
         border-radius: 5px;
         box-shadow: 1px 1px 0 rgba(0,0,0,.2);
         padding: 7px;
-        margin: 5px;
+        margin: 5px 0px;
         max-width: 100%;
         font-family: $robot-slab;
 
@@ -26,17 +26,6 @@
             font-size: 1.6em;
             font-family: $robot-slab;
             font-weight: bold;
-
-            &:after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 25px;
-                width: 217px;
-                padding: 0 50px;
-                height: 2px;
-                border-bottom: solid 1px $orange;
-            }
         }
 
         p {
@@ -68,3 +57,7 @@ body::-webkit-scrollbar-thumb {
     outline: 1px solid slategrey;
 }
 
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: $orange;
+    color: #fff;
+}

@@ -129,6 +129,10 @@ input, textarea {
     font-weight: 500;
     z-index: 100;
     cursor: pointer;
+
+    @media (max-width: 480px) {
+        top: -35px;
+    }
 }
 
 .row {
@@ -154,4 +158,23 @@ input, textarea {
     h3 {
         margin: 0 0 5px 0;
     }
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.adminActions {
+    display: none;
+}
+
+.panel-heading {
+    background-color: $orange !important;
+    color: #000 !important;
+    font-family: $titillium;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: $orange;
+    border-color: $orange;
 }

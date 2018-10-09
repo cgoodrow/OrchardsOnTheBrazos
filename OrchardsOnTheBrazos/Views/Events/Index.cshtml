@@ -17,6 +17,7 @@
                 {
                     <div class="panel">
                         <div class="panel-heading">
+                            <i class="fa fa-calendar"></i>
                             <h3 class="panel-title">@Html.DisplayFor(modelItem => item.EventName)</h3>
                         </div>
                         <div class="panel-body">
@@ -24,7 +25,7 @@
                                 @Html.DisplayFor(modelItem => item.EventPost)<br />
                             </p>
 
-                            <img src="@Url.Content("/Content/Temp/")@item.EventPicture" class="img-responsive " />
+                            <img src="@Url.Content("/Content/Uploads/")@item.EventPicture" class="img-responsive " />
                             @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
                             {
                                 <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Events/Edit/@item.EventId')">Edit</button>

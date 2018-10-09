@@ -20,7 +20,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // Controllers
 
         // GET: /Admin/
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Resident")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
         public ActionResult Index(string searchStringUserNameOrEmail, string currentFilter, int? page, RegisterViewModel model)
         {
@@ -56,7 +56,7 @@ namespace OrchardsOnTheBrazos.Controllers
                 intTotalPageCount = UserManager.Users
                     .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
                     .Count();
-                    //.Where(x => x.LastName.Contains(searchStringUserNameOrEmail)).Count();
+                //.Where(x => x.LastName.Contains(searchStringUserNameOrEmail)).Count();
 
                 var result = UserManager.Users
                     .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
@@ -102,7 +102,7 @@ namespace OrchardsOnTheBrazos.Controllers
         // Users *****************************
 
         // GET: /Admin/Edit/Create 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Board Member")]
         #region public ActionResult Create()
         public ActionResult Create()
         {

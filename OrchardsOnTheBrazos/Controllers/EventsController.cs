@@ -16,11 +16,12 @@ namespace OrchardsOnTheBrazos.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Events
+        [Authorize(Roles = "Resident")]
         public ActionResult Index()
         {
             return View(db.Events.ToList());
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Events/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -35,7 +36,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Details", @event);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Events/Create
         public ActionResult _Create()
         {
@@ -68,7 +69,7 @@ namespace OrchardsOnTheBrazos.Controllers
                     else
                     {
                         @event.EventPicture = @event.EventId + fi.Extension;
-                        file.SaveAs(Server.MapPath("~/Content/Temp/" + @event.EventId + fi.Extension));
+                        file.SaveAs(Server.MapPath("~/Content/Uploads/" + @event.EventId + fi.Extension));
                     }
                 }
 
@@ -79,7 +80,7 @@ namespace OrchardsOnTheBrazos.Controllers
 
             return View(@event);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Events/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -104,6 +105,7 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             var oldFile = @event.EventId;
             TempData["OldFile"] = oldFile;
+
             if (ModelState.IsValid)
             {
                 HttpPostedFileBase file = Request.Files["EventPicture"];
@@ -117,7 +119,7 @@ namespace OrchardsOnTheBrazos.Controllers
                     }
                     else
                     {
-                        string fullPath = Request.MapPath("~/Content/Temp/" + @event.EventId + fi.Extension);
+                        string fullPath = Request.MapPath("~/Content/Uploads/" + @event.EventId + fi.Extension);
 
                         if (System.IO.File.Exists(fullPath))
                         {
@@ -126,7 +128,7 @@ namespace OrchardsOnTheBrazos.Controllers
 
                         @event.EventPicture = @event.EventId + fi.Extension;
 
-                        file.SaveAs(Server.MapPath("~/Content/Temp/" + @event.EventId + fi.Extension));
+                        file.SaveAs(Server.MapPath("~/Content/Uploads/" + @event.EventId + fi.Extension));
 
                         @event.EventPicture = @event.EventId + fi.Extension;
                     }
@@ -139,7 +141,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return View(@event);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Events/Delete/5
         public ActionResult Delete(Guid? id)
         {
@@ -154,7 +156,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Delete", @event);
         }
-
+        [Authorize(Roles = "Resident")]
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

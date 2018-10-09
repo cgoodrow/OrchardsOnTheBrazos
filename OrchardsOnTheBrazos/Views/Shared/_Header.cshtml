@@ -10,17 +10,16 @@
                 @Html.Partial("_LoginPartial")
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Documentation", "Index", "Supports")</li>
-                    <li>@Html.ActionLink("Events", "Index", "Events")</li>
-                    <li>@Html.ActionLink("Helpful Info", "Index", "Info")</li>
-                    <li>@Html.ActionLink("Account Info", "AccoutInfo", "Home")</li>
-                    <li>@Html.ActionLink("Directory", "Directory", "Home")</li>
+                    <li><i class="fa fa-home"></i>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li><i class="fa fa-folder-open"></i>@Html.ActionLink("Documentation", "Index", "Supports")</li>
+                    <li><i class="fa fa-calendar"></i>@Html.ActionLink("Events", "Index", "Events")</li>
+                    <li><i class="fa fa-link"></i>@Html.ActionLink("Resources", "Index", "Info")</li>
+                    <li><i class="fa fa-database"></i>@Html.ActionLink("Directory", "Index", "Directory")</li>
                 }
 
                 @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
                 {
-                    <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                    <li><i class="fa fa-user-secret"></i>@Html.ActionLink("Administration", "Index", "Admin")</li>
                 }
             </ul>
         </div>

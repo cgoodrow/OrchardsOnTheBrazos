@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 @Html.LabelFor(model => model.EventName, new { @class = "control-label " })
-                                @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                             </div>
                         </div>
                         <div class="form-group">
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 @Html.LabelFor(model => model.EventPost, htmlAttributes: new { @class = "control-label " })
-                                    @Html.TextAreaFor(model => model.EventPost, new { @class = "form-control text-area" })
+                                    @Html.TextAreaFor(model => model.EventPost, new { @class = "form-control text-area", required = "required" })
                                     @Html.ValidationMessageFor(model => model.EventPost, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                 <div class="modal-footer">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <button type="submit" value="Create" class="btn btn-default">Create</button> <span>|</span>     @Html.ActionLink("Back to List", "Index")
+                            <button type="submit" value="Create" class="btn btn-primary">Create</button> <span>|</span>     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
                         </div>
                     </div>
                 </div>

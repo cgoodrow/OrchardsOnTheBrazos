@@ -14,18 +14,17 @@ namespace OrchardsOnTheBrazos.Controllers
     public class SupportsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [Authorize(Roles = "Resident")]
         // GET: Supports
         public ActionResult _CreateDocumentModal()
         {
             return PartialView();
         }
-
         public ActionResult Index()
         {
             return View(db.Supports.ToList());
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Supports/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,7 +39,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return View(support);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Supports/Create
         public ActionResult Create()
         {
@@ -71,8 +70,8 @@ namespace OrchardsOnTheBrazos.Controllers
                             Id = Guid.NewGuid()
                         };
                         fileDetails.Add(fileDetail);
-
-                        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
+                        
+                        var path = Path.Combine(Server.MapPath("~/Content/Files/"), fileDetail.Id + fileDetail.Extension);
                         file.SaveAs(path);
                     }
                 }
@@ -90,6 +89,7 @@ namespace OrchardsOnTheBrazos.Controllers
         //    return PartialView();
         //}
         // GET: Supports/Edit/5
+        [Authorize(Roles = "Resident")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -128,7 +128,7 @@ namespace OrchardsOnTheBrazos.Controllers
                             Id = Guid.NewGuid(),
                             SupportId = support.SupportId
                         };
-                        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
+                        var path = Path.Combine(Server.MapPath("~/Content/Files/"), fileDetail.Id + fileDetail.Extension);
                         file.SaveAs(path);
 
                         db.Entry(fileDetail).State = EntityState.Added;
@@ -143,7 +143,7 @@ namespace OrchardsOnTheBrazos.Controllers
 
         public FileResult Download(String p, String d)
         {
-            return File(Path.Combine(Server.MapPath("~/App_Data/Upload/"), p), System.Net.Mime.MediaTypeNames.Application.Octet, d);
+            return File(Path.Combine(Server.MapPath("~/Content/Files/"), p), System.Net.Mime.MediaTypeNames.Application.Octet, d);
         }
         [HttpGet]
         public ActionResult DownloadModal(int? id)
@@ -159,7 +159,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Download", support);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Supports/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -184,14 +184,14 @@ namespace OrchardsOnTheBrazos.Controllers
 
             //delete files from the file system
 
-            //foreach (var item in support.FileDetails)
-            //{
-            //    String path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.Id + item.Extension);
-            //    if (System.IO.File.Exists(path))
-            //    {
-            //        System.IO.File.Delete(path);
-            //    }
-            //}
+            foreach (var item in support.FileDetails)
+            {
+                String path = Path.Combine(Server.MapPath("~/Content/Files/"), item.Id + item.Extension);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
             db.Supports.Remove(support);
             Json(db.SaveChanges());
             return RedirectToAction("Index");

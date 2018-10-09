@@ -9,6 +9,11 @@ h2, h3, h4 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
+
 h1 {
   font-family: "Black Han Sans", sans-serif;
   color: #d1a017; }
@@ -19,6 +24,11 @@ h2, h3, h4 {
 
 p {
   font-family: "Titillium Web", sans-serif; }
+
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
 
 a {
   cursor: pointer; }
@@ -122,6 +132,9 @@ input, textarea {
   font-weight: 500;
   z-index: 100;
   cursor: pointer; }
+  @media (max-width: 480px) {
+    .create {
+      top: -35px; } }
 
 .row {
   margin-left: 0;
@@ -143,6 +156,21 @@ input, textarea {
   .modal-body h3 {
     margin: 0 0 5px 0; }
 
+.inline-block {
+  display: inline-block; }
+
+.adminActions {
+  display: none; }
+
+.panel-heading {
+  background-color: #d1a017 !important;
+  color: #000 !important;
+  font-family: "Titillium Web", sans-serif; }
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #d1a017;
+  border-color: #d1a017; }
+
 h1 {
   font-family: "Black Han Sans", sans-serif;
   color: #d1a017; }
@@ -154,28 +182,33 @@ h2, h3, h4 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
+
 .info.community .info-box {
   position: relative;
   max-height: none;
   z-index: 5; }
-  .info.community .info-box.non-user h2 {
-    width: 538px; }
-    @media (max-width: 600px) {
-      .info.community .info-box.non-user h2 {
-        width: 100%; } }
-  .info.community .info-box h5:after {
-    bottom: auto !important; }
-  .info.community .info-box h5 span {
-    color: #d1a017;
-    font-size: 16px;
-    font-weight: 100; }
+  .info.community .info-box.non-user {
+    padding: 35px; }
+    .info.community .info-box.non-user h2 {
+      width: 538px; }
+      @media (max-width: 600px) {
+        .info.community .info-box.non-user h2 {
+          width: 100%; } }
+    .info.community .info-box.non-user span {
+      color: #d1a017;
+      font-size: 16px;
+      font-weight: 100; }
   .info.community .info-box p {
     z-index: 10; }
   .info.community .info-box img {
     position: absolute;
     bottom: 0px;
     right: 0;
-    max-width: 188px;
+    max-width: 288px;
     height: 100%;
     width: 100%;
     z-index: -1;
@@ -198,6 +231,10 @@ p {
 
 .navbar-inverse {
   margin-bottom: 0; }
+
+.navbar {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
 
 .navbar-collapse {
   padding: 2px 2px; }
@@ -222,8 +259,17 @@ p {
 .admin {
   position: absolute;
   top: 254px;
-  right: 0;
+  right: 1px;
   z-index: 150; }
+  @media (max-width: 480px) {
+    .admin {
+      top: 215px; } }
+
+.disabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none; }
 
 h1 {
   font-family: "Black Han Sans", sans-serif;
@@ -235,6 +281,11 @@ h2, h3, h4 {
 
 p {
   font-family: "Titillium Web", sans-serif; }
+
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
 
 .events-home {
   position: relative; }
@@ -265,6 +316,9 @@ p {
   .events-home .panel .panel-heading {
     background-color: #d1a017;
     border-color: #111; }
+    .events-home .panel .panel-heading .fa {
+      color: #000 !important;
+      float: left; }
     .events-home .panel .panel-heading .panel-title {
       color: #000; }
   .events-home .panel .panel-body {
@@ -289,6 +343,11 @@ h2, h3, h4 {
 p {
   font-family: "Titillium Web", sans-serif; }
 
+.fa {
+  font-size: 17px !important;
+  color: #d1a017 !important;
+  padding-right: 7px; }
+
 @media (max-width: 480px) {
   .nav {
     padding: 0;
@@ -303,7 +362,7 @@ p {
     border-radius: 5px;
     box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
     padding: 7px;
-    margin: 5px;
+    margin: 5px 0px;
     max-width: 100%;
     font-family: "Roboto Slab", serif; }
     .info .info-box h5 {
@@ -311,15 +370,6 @@ p {
       font-size: 1.6em;
       font-family: "Roboto Slab", serif;
       font-weight: bold; }
-      .info .info-box h5:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 25px;
-        width: 217px;
-        padding: 0 50px;
-        height: 2px;
-        border-bottom: solid 1px #d1a017; }
     .info .info-box p {
       padding-top: 4px; }
 
@@ -341,8 +391,15 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey; }
 
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+  background-color: #d1a017;
+  color: #fff; }
+
 .support .panel .panel-heading {
   background-color: #222; }
+  .support .panel .panel-heading .fa {
+    color: #000 !important;
+    float: left; }
   .support .panel .panel-heading .panel-title {
     font-weight: 700;
     cursor: pointer; }
@@ -359,11 +416,9 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 100%;
     object-position: 0 -47vw;
-    border-radius: 15px; }
-    @media (max-width: 767px) {
-      .login-page img {
-        border-top-right-radius: 0;
-        border-top-left-radius: 0; } }
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
     @media (max-width: 1024) {
       .login-page img {
         object-position: 0 -35vw; } }
@@ -386,6 +441,21 @@ body::-webkit-scrollbar-thumb {
 #loginForm.register h2 {
   width: 121px; }
 
+.ul-login {
+  margin-bottom: 14px; }
+
+.register-form .form-group {
+  margin-right: 0px; }
+
+.info li .fa-info-circle {
+  color: #000 !important; }
+
+.info li a {
+  color: #000; }
+
+.directory h2 {
+  width: 134px; }
+
 body {
   padding-top: 10px;
   background-color: #eee; }
@@ -406,4 +476,3 @@ input,
 select,
 textarea {
   max-width: 280px; }
-

@@ -11,6 +11,7 @@ namespace OrchardsOnTheBrazos.Models
     {
         public string FirstName { get; internal set; }
         public string LastName { get; internal set; }
+        public string Address { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -41,5 +42,10 @@ namespace OrchardsOnTheBrazos.Models
 
         public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Support> Supports { get; set; }
 
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Info> Infoes { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.Directory> Directories { get; set; }
+
+        public System.Data.Entity.DbSet<OrchardsOnTheBrazos.Models.DirectoryDetail> DirectoryDetails { get; set; }
     }
 }

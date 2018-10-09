@@ -15,6 +15,7 @@ namespace OrchardsOnTheBrazos.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Announcements
+        [Authorize(Roles="Resident")]
         public ActionResult Index()
         {
             return View(db.Announcements.ToList());
@@ -24,7 +25,7 @@ namespace OrchardsOnTheBrazos.Controllers
         {
             return PartialView(db.Announcements.ToList());
         }
-
+        [Authorize(Roles ="Resident")]
         // GET: Announcements/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,7 +40,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return PartialView("_Details",announcements);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Announcements/Create
         public ActionResult _Create()
         {
@@ -60,9 +61,9 @@ namespace OrchardsOnTheBrazos.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(announcements);
+            return RedirectToAction("Index", "Home", announcements);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Announcements/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,7 +94,7 @@ namespace OrchardsOnTheBrazos.Controllers
             }
             return View(announcements);
         }
-
+        [Authorize(Roles = "Resident")]
         // GET: Announcements/Delete/5
         public ActionResult Delete(int? id)
         {

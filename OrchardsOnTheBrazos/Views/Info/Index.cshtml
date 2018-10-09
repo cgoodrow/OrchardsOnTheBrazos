@@ -1,37 +1,63 @@
-﻿
-@model IEnumerable<OrchardsOnTheBrazos.Info>
+﻿@model IEnumerable<OrchardsOnTheBrazos.Models.Info>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Community Resources";
 }
 
-<section class="info">
-    @Html.ActionLink("Create New", "Create", null, new { @class = "create adminActions" })
-    <div class="col-lg-12 center-block">
-        <h2 class="text-center">Helpful Info</h2>
+<section class="events-home info">
+    @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+    {
+        <button type="button" class="btn btn-warning adminActions create" data-toggle="modal" data-target="#infoCreate">Create</button>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="width: 327px;" class="text-center">Community Resources</h2>
+        </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 no-gutters center-block">
-            @foreach (var item in Model)
-            {
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 no-gutters">
-                    <div class="info-box">
-                        <h5 class="text-center">@Html.DisplayFor(modelItem => item.heading_one)</h5>
-
-                        <p>
-                            @Html.DisplayFor(modelItem => item.paragraph_one) <br /><br />
-                            @if (User.IsInRole("Board Member") || User.IsInRole("Administrator"))
-                            {
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "adminActions" }) <span>|</span>
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "adminActions" }) <span>|</span>
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "adminActions" })
-                            }
-                        </p>
-                    </div>
-                </div>
-
-            }
+        <div class="col-md-7 center-block">
+            <ul class="list-group list-group-flush">
+                @foreach (var item in Model)
+                {
+                <li class="list-group-item">
+                    <i class="fa fa-info-circle
+"></i>
+                    <a href="@item.Link" target="_blank">
+                        @Html.DisplayFor(modelItem => item.Site)
+                    </a>
+                    <br />
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Board Member"))
+    {
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-primary btn-sm adminActions" onclick="RenderActions('/Info/Edit/@item.Id')">Edit</button>
+                <span class="adminActions">|</span>
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-default btn-sm adminActions" onclick="RenderActions('/Info/Details/@item.Id')">Details</button>
+                <span class="adminActions">|</span>
+                <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn btn-danger btn-sm adminActions" onclick="RenderActions('/Info/Delete/@item.Id')">Delete</button>
+}
+                </li>
+                }
+            </ul>
         </div>
     </div>
 </section>
+
+@Html.Partial("_CreateModal")
+@Html.Action("_Create");
+
+@section Scripts {
+
+    @if (TempData["Errormsg"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                console.log("success");
+                $('#errorModal').modal(function () {
+                    this.show();
+                });
+            });
+        </script>
+    }
+}
+
+
 
